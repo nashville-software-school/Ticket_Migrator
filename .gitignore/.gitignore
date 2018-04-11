@@ -2,6 +2,7 @@ node_modules
 *.db
 .vscode
 .sqlite3
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
