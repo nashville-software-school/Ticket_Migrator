@@ -5,5 +5,5 @@ app_name = 'migrator_app'
 urlpatterns = [
     path('/addsourceform/', add_source_view.renderAddSource, name='renderAddSource'),
     path('/addsource/', add_source_view.addSource, name='addSource'),
-    path('/backloggroomer/', backlog_groomer_view.renderBacklogGroomer, name='renderBacklogGroomer'),
+    path('/reposelector/', backlog_groomer_view.renderRepoSelector, name='renderRepoSelector'),
 ]
