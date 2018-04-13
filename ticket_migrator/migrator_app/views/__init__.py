@@ -1,1 +1,1 @@
-from . import add_source_view
+from . import add_source_view, backlog_groomer_view
