@@ -1,0 +1,12 @@
+{% load static %}
+
+<!-- dropdown for source select-->
+<form method="POST">
+    <select name="source_repo_selection">
+        {% for repo in source_repos %}
+            <option value"{{ repo.id }}">{{ repo.url }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="OK">
+</form>
+<!-- list of issues from source repo -->

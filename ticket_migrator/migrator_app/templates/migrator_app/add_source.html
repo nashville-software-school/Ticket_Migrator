@@ -1,0 +1,8 @@
+{% load static %}
+
+<form action="../addsource/" method="post">
+    {% csrf_token %}
+    <label for="source_repo">Source Repo :</label>
+    <input id="source_repo" type="text" name="source_repo" placeholder="https://github.com/PythonWizards/MigratorTesting">
+    <input type="submit" value="OK">
+</form>
