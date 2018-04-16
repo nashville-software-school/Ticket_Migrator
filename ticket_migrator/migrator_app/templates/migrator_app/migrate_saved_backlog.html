@@ -1,0 +1,20 @@
+{% load static %}
+
+<h1>Migrate Backlogs</h1>
+
+<!-- allow user to select multiple repos to target for backlog migration -->
+<!-- confirm???? -->
+<form action="../migrateBacklog/" method="post">
+    {% csrf_token %}
+        <input type="hidden" id="sprint_name" name="sprint_name" value="{{sprint_name}}">
+        <input type="hidden" id="source_repo" name="source_repo" value="{{source_repo}}">
+        <input type="hidden" id="issue_array" name="issue_array" value="">
+        <input type="submit" value="OK">
+    </form>
+    
+
+<!-- allow user inject the previously selected groomed backlog -->
+    <label for="migrate_backlog">Select</label>
+    <input type="submit" value="Add">
+    
+</form> 
