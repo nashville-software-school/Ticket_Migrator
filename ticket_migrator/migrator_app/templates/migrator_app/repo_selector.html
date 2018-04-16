@@ -1,12 +1,13 @@
 {% load static %}
 
-<!-- dropdown for source select-->
-<form method="POST">
-    <select name="source_repo_selection">
-        {% for repo in source_repos %}
-            <option value"{{ repo.id }}">{{ repo.url }}</option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="OK">
-</form>
+
+<!-- *Form action* - 'url' specifies a url redirect
+second argument is the view, '.createDrag_Drop' is the function on that drag_view
+third argument 'repo.id' is ID of selected repo in select box -->
+
+{% for source_repo in source_repos %}
+    <h1><a href="./drag_drop/{{source_repo.id}}">{{ source_repo.url }}</a></ha>
+{% endfor %}
+
+<!-- </form> -->
 <!-- list of issues from source repo -->
