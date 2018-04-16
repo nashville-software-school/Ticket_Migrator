@@ -1,0 +1,8 @@
+{% load static %}
+
+<h1>Migrated {{backlog.name}}</h1>
+<h2>from {{backlog.source_repo}}</h2>
+<h2>to</h2>
+{% for repos in target_repos %}
+    {{repos}}
+{% endfor %}
