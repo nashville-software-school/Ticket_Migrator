@@ -1,7 +1,9 @@
 node_modules
 *.db
 .vscode
-sqlite3
+.sqlite3
+.DS_Store
+.sqlite3-journal
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
