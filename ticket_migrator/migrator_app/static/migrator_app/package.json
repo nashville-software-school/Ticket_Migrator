@@ -1,0 +1,14 @@
+{
+  "name": "migrator_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "drag_drop.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dragula": "^3.7.2"
+  }
+}
