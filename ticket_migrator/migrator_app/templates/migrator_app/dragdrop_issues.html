@@ -1,0 +1,42 @@
+{% load static %}
+
+<link href="{% static '/migrator_app/main.css' %}" rel='stylesheet' type='text/css' />
+
+<link href="{% static '/migrator_app/node_modules/dragula/dist/dragula.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static '/migrator_app/node_modules/dragula/dist/dragula.min.css' %}" rel='stylesheet' type='text/css' />
+
+<!-- NEED TO CHECK THESE LINKS TO CSS ^^ -->
+
+<h1>{{source_repo.url}}</h1>
+
+{% if issues %}  <!-- List of things in 'context' object in drag_view.html  -->
+    <div id="dragBoxLeft" class="container"></div>
+    <div id="dragBoxRight" class="container">
+        {% for issue in issues %}
+            <div class="{{ issue.github_id }}">{{ issue.issue_number }} : {{ issue.issue_title }}</div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No tickets are available.</p>
+{% endif %}
+
+
+<!-- Creates groomed backlog for saving to database -->
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="text" id="backlog_name" name="backlog_name" placeholder="Enter Sprint Name">
+    <input type="hidden" id="source_repo" name="source_repo" value="{{source_repo}}">
+    <!-- issue_array below references the javascript dragula function in drag_drop.js -->
+    <input type="hidden" id="issue_array" name="issue_array" value="">
+    <input type="submit" value="OK">
+</form>
+
+
+
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static "/migrator_app/node_modules/dragula/dist/dragula.min.js" %}"></script>
+<script type="text/javascript" src="{% static "/migrator_app/drag_drop.js" %}"></script>
