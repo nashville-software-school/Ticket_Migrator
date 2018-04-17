@@ -1,13 +1,24 @@
 {% load static %}
 
-
-<!-- *Form action* - 'url' specifies a url redirect
-second argument is the view, '.createDrag_Drop' is the function on that drag_view
-third argument 'repo.id' is ID of selected repo in select box -->
-
-{% for source_repo in source_repos %}
-    <h1><a href="./drag_drop/{{source_repo.id}}">{{ source_repo.url }}</a></ha>
-{% endfor %}
-
-<!-- </form> -->
-<!-- list of issues from source repo -->
+<div>
+    <select id="test">
+        {% for choice in choices %}
+            <option value={{choice.0}}>{{choice.1}}</option>
+        {% endfor %}
+    </select>
+    <button onclick="window.location.href=test.value">Click</button>
+</div>
+<div>
+    <ul>
+        {% for backlog in backlogs %}
+            <li>
+                <span>{{ backlog.name }}</span>
+                <span>
+                    <a href="./migrate/{{backlog.id}}">Migrate</a>
+                    <span> | </span>
+                    <a href="./details/{{backlog.id}}">Details</a>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

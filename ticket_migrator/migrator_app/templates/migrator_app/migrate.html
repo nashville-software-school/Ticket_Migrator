@@ -11,7 +11,7 @@
 
 <!-- Form to submit details to the server -->
 <br>
-<form id="submit" action="../success/" method="post" onsubmit="set_form_values()">
+<form id="submit" action="../success/{{backlog.id}}" method="post" onsubmit="set_form_values()">
     {% csrf_token %}
     
     <input type="hidden" id="backlog" name="backlog" value="{{backlog}}">
