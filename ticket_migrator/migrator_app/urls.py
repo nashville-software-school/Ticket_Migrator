@@ -9,4 +9,5 @@ urlpatterns = [
     path('drag_drop/<int:source_repo_id>', drag_view.drag_view, name='drag_drop'),
     path('migrate/<int:backlog_id>', select_target_repos_view.select_target_repos, name='select_target_repos'),
     path('success/<int:backlog_id>', success_view.success, name='success'),
+    path('details/<int:backlog_id>', details_view.details, name='details'),
 ]
