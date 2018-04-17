@@ -1,0 +1,15 @@
+{% load static %}
+
+<h1>{{ backlog.name }}</h1>
+<h1>{{ backlog.source_repo.url }}</h1>
+<br>
+
+<!-- List the issues attached to the backlog -->
+{% for issue in issues %}
+<div>{{issue.number}} : {{issue.title}}</div>
+{% endfor %}
+
+<br>
+<a href="../migrate/{{backlog.id}}">Migrate</a>
+<span> | </span>
+<a href="../delete/{{backlog.id}">Delete</a>
