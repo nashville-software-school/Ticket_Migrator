@@ -1,5 +1,6 @@
-{% load static %}
+{% extends "./layout.html" %}
 
+{% block content %}
 <div>
     <select id="test">
         {% for choice in choices %}
@@ -22,3 +23,4 @@
         {% endfor %}
     </ul>
 </div>
+{% endblock %}
