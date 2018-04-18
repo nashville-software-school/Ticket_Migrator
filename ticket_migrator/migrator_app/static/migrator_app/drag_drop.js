@@ -17,11 +17,14 @@ $("#migrate_button").click(e => {
 })
 
 $("#create_button").click(e => {
-    $("#modal").hide()
+    $(".modal").removeClass('is-active')
     $("#backlog_name")[0].value = ''
     let r = $('.issue').remove()
     $(dragula_obj.containers[1]).append(r)
+})
 
+$("#modal-close").click(e => {
+    $(".modal").removeClass('is-active')
 })
 
 $("#submit_button").click(e => {
@@ -54,7 +57,7 @@ $("#submit_button").click(e => {
     data: data
   }).done(response => {
     saved_backlog = response.backlog_id
-    $("#modal").show()
+    $(".modal").toggleClass('is-active')
   });
 
 });
