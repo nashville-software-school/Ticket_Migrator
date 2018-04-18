@@ -2,18 +2,34 @@
 
 {% block content %}
 
-<h1>{{ backlog.name }}</h1>
-<h1>{{ backlog.source_repo.url }}</h1>
 <br>
-
-<!-- List the issues attached to the backlog -->
-{% for issue in issues %}
-<div>{{issue.number}} : {{issue.title}}</div>
-{% endfor %}
-
-<br>
-<a href="../migrate/{{backlog.id}}">Migrate</a>
-<span> | </span>
-<a href="../delete/{{backlog.id}">Delete</a>
-
+<div class="tile is-ancestor">
+    <div class="tile is-vertical is-8">
+        <div class="tile">
+            <div class="tile is-parent is-vertical">
+                <article class="tile is-child notification is-dark">
+                    <p class="title has-text-centered">Backlog Details</p>
+                    <hr>
+                    <p class="subtitle">Title: {{ backlog.name }}</p>
+                    <p class="subtitle">Source: <a target="_blank" href="{{ backlog.source_repo.url }}">{{ backlog.source_repo.url }}</a></p>
+                    <hr>
+                    <p>Actions:</p>
+                    <a href="../migrate/{{backlog.id}}">Migrate</a>
+                    <span> | </span>
+                    <a href="../delete/{{backlog.id}">Delete</a>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child notification is-info">
+                     <p class="title has-text-centered">Issues (groomed)</p>
+                     <hr>
+                    {% for issue in issues %}
+                    <p class="subtitle">#{{issue.number}} : {{issue.title}}</p>
+                    {% endfor %}
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
 {% endblock %}
+
