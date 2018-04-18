@@ -21,7 +21,10 @@ $("#create_button").click(e => {
     $("#backlog_name")[0].value = ''
     let r = $('.issue').remove()
     $(dragula_obj.containers[1]).append(r)
+})
 
+$("#modal-close").click(e => {
+    $(".modal").removeClass('is-active')
 })
 
 $("#submit_button").click(e => {

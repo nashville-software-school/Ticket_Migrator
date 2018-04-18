@@ -18,12 +18,16 @@
 
 
 {% if issues %}  <!-- List of things in 'context' object in drag_view.html  -->
-    <div class="drag_and_drop_container">
+    <div class="drag_and_drop_container container">
 
-        <div id="dragBoxLeft" class="container"></div>
-        <div id="dragBoxRight" class="container">
+        <div id="dragBoxLeft" class="box"></div>
+        <div id="dragBoxRight" class="box">
             {% for issue in issues %}
-                <div id="{{ issue.github_id }}" class='issue'>{{ issue.issue_number }} : {{ issue.issue_title }}</div>
+                <div id="{{ issue.github_id }}" class='card'>
+                    <div class="card-content">
+                            {{ issue.issue_number }} : {{ issue.issue_title }}
+                    </div>
+                </div>
             {% endfor %}
         </div>
 {% else %}
@@ -36,34 +40,18 @@
     <input id="submit_button" type="submit" value="Save Backlog">
 </form>
 
-<!-- <div id="modal">
-    <div id="moda-content">
-        <div class="modal-header">
-            <span class="close">&times;</span>
-            <p id="modalTitle">Congratulations</p>
-            <div class="modal-filter"></div>
-        </div>
-        <div id="modalContent">
-            <h2>Your Backlog Has Been Saved</h2>
-            <button id="home_button">Home</button>
-            <button id="create_button">Create Additional</button>
-            <button id="migrate_button">Migrate</button>
-        </div>
-    </div>
-</div> -->
-
 <div class="modal">
     <div class="modal-background"></div>
     <div class="modal-content">
-        <div class="box has-text-centered">
+        <div class="box has-background-dark has-text-white has-text-centered">
             <h2 class="is-size-1-desktop">Backlog Saved</h2>
             <br>
-            <button id="home_button" class="button">Home</button>
-            <button id="create_button" class="button">Create Additional</button>
-            <button id="migrate_button" class="button">Migrate</button>
+            <button id="home_button" class="button modal-button">Home</button>
+            <button id="create_button" class="button modal-button">Create Additional</button>
+            <button id="migrate_button" class="button modal-button">Migrate</button>
         </div>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
+    <button id="modal-close" class="modal-close is-large has-background-dark" aria-label="close"></button>
   </div>
 
 <script
