@@ -6,24 +6,25 @@
 <link href="{% static '/migrator_app/drag.css' %}" rel='stylesheet' type='text/css' />
 <link href="{% static '/migrator_app/node_modules/dragula/dist/dragula.min.css' %}" rel='stylesheet' type='text/css' />
 
-<h1>Drag and drop issues to groom backlog</h1>
-<h3>Source Repo : {{source_repo.url}}</h3>
-
+<h1 class="is-size-2">Drag and drop issues to groom backlog</h1>
+<br>
+<h3>Source Repo :</h3>
+<div class="card has-background-dark has-text-white is-size-4">
+    <div class="card-content ">{{source_repo.url}}</div>
+</div>
+<br>
 <!-- Creates groomed backlog for saving to database -->
 <form action="" method="POST">
     {% csrf_token %}
-    <h3>
-        Backlog Name : <input type="text" id="backlog_name" name="backlog_name" placeholder="Bangazon Web API">
-    </h3>
-
+    <h3> Backlog Name :</h3>
+    <input class="input" type="text" id="backlog_name" name="backlog_name" placeholder="Bangazon Web API">
 
 {% if issues %}  <!-- List of things in 'context' object in drag_view.html  -->
-    <div class="drag_and_drop_container container">
-
-        <div id="dragBoxLeft" class="box"></div>
-        <div id="dragBoxRight" class="box">
+    <div class="drag_and_drop_container container has">
+        <div id="dragBoxLeft" class="box dragula_box has-background-dark"></div>
+        <div id="dragBoxRight" class="box dragula_box has-background-info">
             {% for issue in issues %}
-                <div id="{{ issue.github_id }}" class='card'>
+                <div id="{{ issue.github_id }}" class='card issue'>
                     <div class="card-content">
                             {{ issue.issue_number }} : {{ issue.issue_title }}
                     </div>
@@ -37,7 +38,7 @@
 
     <br>
     <input type="hidden" id="source_repo" name="source_repo" value="{{source_repo.id}}">
-    <input id="submit_button" type="submit" value="Save Backlog">
+    <input id="submit_button" class="button is-dark is-large" type="submit" value="Save Backlog">
 </form>
 
 <div class="modal">

@@ -1,28 +1,30 @@
 .drag_and_drop_container {
     display: flex;
-    justify-content: space-evenly
+    justify-content: space-between;
 }
-/* 
-#dragBoxLeft {
-    background-color: goldenrod;
-}
-
-#dragBoxRight {
-    background-color: firebrick;
-}
-
-.issue {
-    background-color:rgba(255,255,255,.5);
-    padding: 5px;
-    border-radius: 5px;
-    margin: 5px
-} */
 
 .modal-background {
     background-color: rgba(255,255,255,.86)
 }
 
+.dragula_box {
+    width: 48%;
+    margin-top: 20px;
+}
+
 .modal-button {
     padding: 0 30px;
     margin: 0 px;
+}
+
+.issue {
+    height: 80;
+    margin-top: 10px;
+    background-color: rgba(255,255,255,.86);
+    border-radius: 5px;
+}
+
+.card-content {
+    padding: .4rem;
+
 }

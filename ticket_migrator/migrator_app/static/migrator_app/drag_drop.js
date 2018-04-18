@@ -57,7 +57,7 @@ $("#submit_button").click(e => {
     data: data
   }).done(response => {
     saved_backlog = response.backlog_id
-    $(".modal").addclass('is-active')
+    $(".modal").toggleClass('is-active')
   });
 
 });
