@@ -8,10 +8,10 @@
         <div class="tile">
             <div class="tile is-parent is-vertical">
                 <article class="tile is-child notification is-dark">
-                    <p class="title">Backlog</p>
+                    <p class="title has-text-centered">Backlog Details</p>
                     <hr>
                     <p class="subtitle">Title: {{ backlog.name }}</p>
-                    <p class="subtitle">Source: {{ backlog.source_repo.url }}</p>
+                    <p class="subtitle">Source: <a target="_blank" href="{{ backlog.source_repo.url }}">{{ backlog.source_repo.url }}</a></p>
                     <hr>
                     <p>Actions:</p>
                     <a href="../migrate/{{backlog.id}}">Migrate</a>
@@ -21,10 +21,10 @@
             </div>
             <div class="tile is-parent">
               <article class="tile is-child notification is-info">
-                     <p class="title">Issues (groomed)</p>
+                     <p class="title has-text-centered">Issues (groomed)</p>
                      <hr>
                     {% for issue in issues %}
-                    <p class="subtitle">{{issue.number}} : {{issue.title}}</p>
+                    <p class="subtitle">#{{issue.number}} : {{issue.title}}</p>
                     {% endfor %}
               </article>
             </div>
