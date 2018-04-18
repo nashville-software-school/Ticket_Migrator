@@ -1,1 +1,1 @@
-from . import add_source_view, backlog_groomer_view, select_target_repos_view, success_view, drag_view, details_view
+from . import add_source_view, backlog_groomer_view, select_target_repos_view, success_view, drag_view, details_view, backlog_creator_view

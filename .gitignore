@@ -1,8 +1,7 @@
 node_modules
-.vscode
+.vscode/
 *.db
-.vscode
-.sqlite3
+*.sqlite3
 .DS_Store
 .sqlite3-journal
 
@@ -10,6 +9,7 @@ node_modules
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 
 # C extensions
 *.so

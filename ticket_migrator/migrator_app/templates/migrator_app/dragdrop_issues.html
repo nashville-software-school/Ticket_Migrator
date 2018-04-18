@@ -1,38 +1,55 @@
 {% load static %}
 
-<link href="{% static '/migrator_app/main.css' %}" rel='stylesheet' type='text/css' />
-
-<link href="{% static '/migrator_app/node_modules/dragula/dist/dragula.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static '/migrator_app/drag.css' %}" rel='stylesheet' type='text/css' />
 <link href="{% static '/migrator_app/node_modules/dragula/dist/dragula.min.css' %}" rel='stylesheet' type='text/css' />
 
 <!-- NEED TO CHECK THESE LINKS TO CSS ^^ -->
 
-<h1>{{source_repo.url}}</h1>
-
-{% if issues %}  <!-- List of things in 'context' object in drag_view.html  -->
-    <div id="dragBoxLeft" class="container"></div>
-    <div id="dragBoxRight" class="container">
-        {% for issue in issues %}
-            <div class="{{ issue.github_id }}">{{ issue.issue_number }} : {{ issue.issue_title }}</div>
-        {% endfor %}
-    </div>
-{% else %}
-    <p>No tickets are available.</p>
-{% endif %}
-
+<h1>Drag and drop issues to groom backlog</h1>
+<h3>Source Repo : {{source_repo.url}}</h3>
 
 <!-- Creates groomed backlog for saving to database -->
 <form action="" method="POST">
     {% csrf_token %}
-    <input type="text" id="backlog_name" name="backlog_name" placeholder="Enter Sprint Name">
-    <input type="hidden" id="source_repo" name="source_repo" value="{{source_repo}}">
-    <!-- issue_array below references the javascript dragula function in drag_drop.js -->
-    <input type="hidden" id="issue_array" name="issue_array" value="">
-    <input type="submit" value="OK">
+    <h3>
+        Backlog Name : <input type="text" id="backlog_name" name="backlog_name" placeholder="Bangazon Web API">
+    </h3>
+
+
+{% if issues %}  <!-- List of things in 'context' object in drag_view.html  -->
+    <div class="drag_and_drop_container">
+
+        <div id="dragBoxLeft" class="container"></div>
+        <div id="dragBoxRight" class="container">
+            {% for issue in issues %}
+                <div id="{{ issue.github_id }}" class='issue'>{{ issue.issue_number }} : {{ issue.issue_title }}</div>
+            {% endfor %}
+        </div>
+{% else %}
+        <p>No issues are available.</p>
+{% endif %}
+    </div>
+
+    <br>
+    <input type="hidden" id="source_repo" name="source_repo" value="{{source_repo.id}}">
+    <input id="submit_button" type="submit" value="Save Backlog">
 </form>
 
-
-
+<div id="modal">
+    <div id="moda-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <p id="modalTitle">Congratulations</p>
+            <div class="modal-filter"></div>
+        </div>
+        <div id="modalContent">
+            <h2>Your Backlog Has Been Saved</h2>
+            <button id="home_button">Home</button>
+            <button id="create_button">Create Additional</button>
+            <button id="migrate_button">Migrate</button>
+        </div>
+    </div>
+</div>
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
