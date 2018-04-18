@@ -16,7 +16,7 @@ def details(request, backlog_id):
     github = selected_backlog.source_repo.url.split('https://github.com/')[1]
 
     headers = {'Accept': 'application/vnd.github.inertia-preview+json'}
-    url = f'https://api.github.com/repos/{github}/issues'
+    url = f'https://spyproxy.bangazon.com/student/commit/https://api.github.com/repos/{github}/issues'
 
     response = requests.get(url, headers=headers).json()
 

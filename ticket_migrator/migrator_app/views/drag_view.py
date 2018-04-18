@@ -20,10 +20,8 @@ def drag_view(request, source_repo_id):
     #this variable allows you to omit 'https://github.com' from the url on line 24
     github_location = selected_source_repo.url.split("https://github.com/")[1]
 
-    headers = {'Accept': 'application/vnd.github.inertia-preview+json',
-               'Authorization' : 'Basic Y2FtaWxsZXIueXJAZ21haWwuY29tOjNyZE5pZ2h0QmFsY29ueQ=='}
-
-    url = f'https://api.github.com/repos/{github_location}/issues'
+    headers = {'Accept': 'application/vnd.github.inertia-preview+json'}
+    url = f'https://spyproxy.bangazon.com/student/commit/https://api.github.com/repos/{github_location}/issues'
 
     response = requests.get(url, headers=headers).json()
 
