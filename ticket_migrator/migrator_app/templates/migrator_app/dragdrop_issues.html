@@ -36,7 +36,7 @@
     <input id="submit_button" type="submit" value="Save Backlog">
 </form>
 
-<div id="modal">
+<!-- <div id="modal">
     <div id="moda-content">
         <div class="modal-header">
             <span class="close">&times;</span>
@@ -50,7 +50,21 @@
             <button id="migrate_button">Migrate</button>
         </div>
     </div>
-</div>
+</div> -->
+
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box has-text-centered">
+            <h2 class="is-size-1-desktop">Backlog Saved</h2>
+            <br>
+            <button id="home_button" class="button">Home</button>
+            <button id="create_button" class="button">Create Additional</button>
+            <button id="migrate_button" class="button">Migrate</button>
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
