@@ -1,26 +1,44 @@
 {% extends "./layout.html" %}
 
 {% block content %}
-<div>
-    <select id="test">
-        {% for choice in choices %}
-            <option value={{choice.0}}>{{choice.1}}</option>
-        {% endfor %}
-    </select>
-    <button onclick="window.location.href=test.value">Click</button>
-</div>
-<div>
-    <ul>
-        {% for backlog in backlogs %}
-            <li>
-                <span>{{ backlog.name }}</span>
-                <span>
-                    <a href="./migrate/{{backlog.id}}">Migrate</a>
-                    <span> | </span>
-                    <a href="./details/{{backlog.id}}">Details</a>
-                </span>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
+
+<!--  -->
+<br>
+<div class="tile is-ancestor">
+    <div class="tile is-vertical is-8">
+        <div class="tile">
+            <div class="tile is-parent is-vertical">
+                <article class="tile is-child notification is-dark">
+                    <p class="title">Select a Source Repo</p>
+                     <hr>   
+                    <select id="test">
+                        {% for choice in choices %}
+                            <option value={{choice.0}}>{{choice.1}}</option>
+                        {% endfor %}
+                    </select>
+                        <button onclick="window.location.href=test.value">Select</button>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child notification is-info">
+                        <p class="title">Saved Backlogs</p>
+                         <hr>   
+                         <ul>
+                            {% for backlog in backlogs %}
+                            <li>
+                                <span>{{ backlog.name }}</span>
+                                <span>
+                                    <a href="./migrate/{{backlog.id}}">Migrate</a>
+                                    <span> | </span>
+                                    <a href="./details/{{backlog.id}}">Details</a>
+                                </span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
 {% endblock %}
+          
