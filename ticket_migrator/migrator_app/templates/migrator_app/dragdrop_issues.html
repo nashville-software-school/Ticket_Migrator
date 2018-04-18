@@ -1,9 +1,10 @@
+{% extends "./layout.html" %}
 {% load static %}
+
+{% block content %}
 
 <link href="{% static '/migrator_app/drag.css' %}" rel='stylesheet' type='text/css' />
 <link href="{% static '/migrator_app/node_modules/dragula/dist/dragula.min.css' %}" rel='stylesheet' type='text/css' />
-
-<!-- NEED TO CHECK THESE LINKS TO CSS ^^ -->
 
 <h1>Drag and drop issues to groom backlog</h1>
 <h3>Source Repo : {{source_repo.url}}</h3>
@@ -57,3 +58,5 @@
   crossorigin="anonymous"></script>
 <script type="text/javascript" src="{% static "/migrator_app/node_modules/dragula/dist/dragula.min.js" %}"></script>
 <script type="text/javascript" src="{% static "/migrator_app/drag_drop.js" %}"></script>
+
+{% endblock %}
