@@ -1,4 +1,6 @@
-{% load static %}
+{% extends "./layout.html" %}
+
+{% block content %}
 
 <form action="../addsource/" method="post">
     {% csrf_token %}
@@ -6,3 +8,5 @@
     <input id="source_repo" type="text" name="source_repo" placeholder="https://github.com/PythonWizards/MigratorTesting">
     <input type="submit" value="OK">
 </form>
+
+{% endblock %}
