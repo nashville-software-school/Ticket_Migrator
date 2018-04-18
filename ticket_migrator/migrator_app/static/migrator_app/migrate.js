@@ -5,8 +5,14 @@ const addInput = () => {
 const set_form_values = () => {
     get_target_repo_value()
     get_credentails()
+    show_loading_gif()
     return true
 }
+
+const show_loading_gif = () => {
+    $('#loadingGif').show();
+}
+
 
 const get_target_repo_value = () => {
     $('#target_repos')[0].value = 
