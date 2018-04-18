@@ -8,11 +8,11 @@
         <article class="tile is-child notification is-dark">
             <p class="title has-text-centered">Select a Source Repo</p>
              <hr>   
-            <select id="test">
-                {% for choice in choices %}
-                    <option value={{choice.0}}>{{choice.1}}</option>
-                {% endfor %}
-            </select>
+                 <select class="select is-rounded" id="test">
+                     {% for choice in choices %}
+                        <option value={{choice.0}}>{{choice.1}}</option>
+                     {% endfor %}
+                </select>
             <br>
             <br>
             <button class="button is-white" onclick="window.location.href=test.value">Select</button>
