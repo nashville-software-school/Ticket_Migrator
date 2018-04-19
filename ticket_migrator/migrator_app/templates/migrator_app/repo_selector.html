@@ -6,16 +6,14 @@
 <br>
 <div class="tile is-parent is-vertical">
         <article class="tile is-child notification is-dark">
-            <p class="title has-text-centered">Select a Source Repo</p>
+            <p class="title has-text-centered">Create a New Saved Backlog :</p>
              <hr>   
-                 <select class="select is-rounded" id="test">
+                 <select class="select is-rounded is-medium" id="test">
                      {% for choice in choices %}
                         <option value={{choice.0}}>{{choice.1}}</option>
                      {% endfor %}
                 </select>
-            <br>
-            <br>
-            <button class="button is-white" onclick="window.location.href=test.value">Select</button>
+            <button class="button is-white is-medium is-pulled-right" onclick="window.location.href=test.value">Select</button>
             </article>
         </div>
 <div class="tile is-parent">
@@ -25,8 +23,8 @@
              <ul>
                 {% for backlog in backlogs %}
                 <li>
-                    <span>{{ backlog.name }}</span>
-                    <span style="float: right">
+                    <span class="is-size-4">{{ backlog.name }}</span>
+                    <span class="is-pulled-right">
                         <a href="./migrate/{{backlog.id}}">Migrate</a>
                         <span> | </span>
                         <a href="./details/{{backlog.id}}">Details</a>

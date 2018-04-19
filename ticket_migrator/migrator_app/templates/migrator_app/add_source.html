@@ -1,12 +1,68 @@
-{% extends "./layout.html" %}
-
+{% extends "./layout.html" %} 
+{% load static %}
 {% block content %}
 
-<form action="../addsource/" method="post">
-    {% csrf_token %}
-    <label for="source_repo">Source Repo :</label>
-    <input id="source_repo" type="text" name="source_repo" placeholder="https://github.com/PythonWizards/MigratorTesting">
-    <input type="submit" value="OK">
-</form>
+<link href="{% static '/migrator_app/add_source.css' %}" rel='stylesheet' type='text/css' />
 
+<br>
+<div class="tile is-parent is-vertical">
+    <article class="tile is-child notification is-dark">
+        <p class="title has-text-centered">Add New Source Repo :</p>
+        <hr>
+        <form action="../addsource/" method="post">
+            {% csrf_token %}
+            <div class="field is-horizontal">
+                
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control">
+                            <input id="source_repo" class="input" type="text" name="source_repo" placeholder="https://github.com/PythonWizards/MigratorTesting">
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="field-label is-small">
+                    <label class="label">
+                        <input class="button is-white is-medium" type="submit" value="SAVE">
+                    </label>
+                </div>
+                
+            </div>
+        </form>
+    </article>
+</div>
+
+<div class="tile is-parent">
+    <article class="tile is-child notification is-info">
+        <p class="title centered has-text-centered">Saved Source Repos :</p>
+        <hr>
+        <ul>
+            {% for source_repo in source_repos %}
+            <li>
+                <span class="is-size-4 sr-{{source_repo.id}}">{{ source_repo.url }}</span>
+                <span class="is-pulled-right">
+                    <a id="{{source_repo.id}}" class="delete" href="#">Delete</a>
+                </span>
+            </li>
+            {% endfor %}
+        </ul>
+    </article>
+</div>
+
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box has-background-dark has-text-white has-text-centered">
+            <h2 class="is-size-1-desktop">Confirm Delete</h2>
+            <h2 class="is-size-5-desktop"><span id="backlog_url"></span></h2>
+            <br>
+            <button id="confirm" class="button modal-button">Confirm</button>
+            <button id="cancel" class="button modal-button hide_modal_button">Cancel</button>
+        </div>
+    </div>
+    <button class="modal-close is-large has-background-dark hide_modal_button" aria-label="close"></button>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{% static '/migrator_app/add_source.js' %}"></script>
 {% endblock %}
