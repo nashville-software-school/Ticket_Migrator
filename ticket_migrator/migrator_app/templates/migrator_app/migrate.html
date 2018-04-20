@@ -11,7 +11,7 @@
 
 <!-- Form to submit details to the server -->
 <br>
-<form id="submit" action="../success/{{backlog.id}}" method="post" onsubmit="set_form_values()">
+<form id="submit" action="../success/{{backlog.id}}" method="post" onsubmit="return set_form_values()">
     {% csrf_token %}
 
     <input type="hidden" id="backlog" name="backlog" value="{{backlog}}">
@@ -24,14 +24,14 @@
     <label for="password">Github Password :</label>
     <input id="password" type="password" name="password" placeholder="password" required>
     <br>
-    <h2>Enter Target Repo Urls
+    <br>
+    <h2>Enter Target Repository URLs
         <span>
             <button type="button" id="add">+</button>
         </span>
     </h2>
-    <div id="target_repos_div"></div>
     <br>
-
+    <div id="target_repos_div"></div>
     <br>
     <input form='submit' type="submit" value="OK">
 </form>

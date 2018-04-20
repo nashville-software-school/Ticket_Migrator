@@ -6,7 +6,8 @@
 <br>
 <div class="tile is-parent is-vertical">
         <article class="tile is-child notification is-dark">
-            <p class="title has-text-centered">Create a New Saved Backlog :</p>
+            <p class="title has-text-centered">Create a New Sprint :</p>
+            <p class="has-text-centered">Select a source repository to pull issues from</p>
              <hr>   
                  <select class="select is-rounded is-medium" id="test">
                      {% for choice in choices %}
@@ -18,7 +19,7 @@
         </div>
 <div class="tile is-parent">
         <article class="tile is-child notification is-info">
-            <p class="title centered has-text-centered">Saved Backlogs</p>
+            <p class="title centered has-text-centered">Saved Sprints</p>
             <hr>   
             <ul>
                 {% for backlog in backlogs %}
