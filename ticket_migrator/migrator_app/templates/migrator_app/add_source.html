@@ -21,7 +21,7 @@
                                 class="input" 
                                 type="text" 
                                 name="source_repo" 
-                                pattern='^https:\/\/github.com\/\S*\/\S*'
+                                pattern='^https:\/\/github.com\/\S*\/\S*(?<!/)'
                                 title="Use full url with no whitespace - IE : https://github.com/PythonWizards/MigratorTesting"
                                 placeholder="https://github.com/PythonWizards/MigratorTesting"
                                 required >
@@ -49,7 +49,7 @@
             <li>
                 <span class="is-size-4 sr-{{source_repo.id}}">{{ source_repo.url }}</span>
                 <span class="is-pulled-right">
-                    <a id="{{source_repo.id}}" class="delete" href="#">Delete</a>
+                    <a id="{{source_repo.id}}" class="delete _delete" href="#">Delete</a>
                 </span>
             </li>
             {% endfor %}
@@ -64,7 +64,7 @@
             <h2 class="is-size-1-desktop">Confirm Delete</h2>
             <h2 class="is-size-5-desktop"><span id="backlog_url"></span></h2>
             <br>
-            <a href="" id="confirm" class="button modal-button">Confirm</a>
+            <a href="../delete_repo/" id="confirm" class="button modal-button">Confirm</a>
             <button id="cancel" class="button modal-button hide_modal_button">Cancel</button>
         </div>
     </div>
@@ -72,5 +72,5 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="{% static '/migrator_app/add_source.js' %}"></script>
+<script src="{% static '/migrator_app/delete_modal.js' %}"></script>
 {% endblock %}

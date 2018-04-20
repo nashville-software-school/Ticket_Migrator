@@ -1,5 +1,5 @@
 {% extends "./layout.html" %}
-
+{% load static %}
 {% block content %}
 
 <!--  -->
@@ -19,11 +19,12 @@
 <div class="tile is-parent">
         <article class="tile is-child notification is-info">
             <p class="title centered has-text-centered">Saved Backlogs</p>
-             <hr>   
-             <ul>
+            <hr>   
+            <ul>
                 {% for backlog in backlogs %}
                 <li>
-                    <span class="is-size-4">{{ backlog.name }}</span>
+                    <a id="{{backlog.id}}" class="delete _delete" href="#">Delete</a>
+                    <span class="is-size-4 sr-{{backlog.id}}">{{ backlog.name }}</span>
                     <span class="is-pulled-right">
                         <a href="./migrate/{{backlog.id}}">Migrate</a>
                         <span> | </span>
@@ -34,6 +35,23 @@
             </ul>
       </article>
     </div>
+    <div class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box has-background-dark has-text-white has-text-centered">
+                    <h2 class="is-size-1-desktop">Confirm Delete</h2>
+                    <h2 class="is-size-5-desktop"><span id="backlog_url"></span></h2>
+                    <br>
+                    <a href="./delete_backlog/" id="confirm" class="button modal-button">Confirm</a>
+                    <button id="cancel" class="button modal-button hide_modal_button">Cancel</button>
+                </div>
+            </div>
+            <button class="modal-close is-large has-background-dark hide_modal_button" aria-label="close"></button>
+        </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>        
+<script src="{% static '/migrator_app/delete_modal.js' %}"></script>
+        
  
 {% endblock %}
           

@@ -14,10 +14,10 @@
 </div>
 <br>
 <!-- Creates groomed backlog for saving to database -->
-<form action="" method="POST">
+<form action="javascript:void(0);" onsubmit="on_submit()">
     {% csrf_token %}
     <h3> Backlog Name :</h3>
-    <input class="input" type="text" id="backlog_name" name="backlog_name" placeholder="Bangazon Web API">
+    <input class="input" type="text" id="backlog_name" name="backlog_name" placeholder="Bangazon Web API" required>
 
 {% if issues %}  <!-- List of things in 'context' object in drag_view.html  -->
     <div class="drag_and_drop_container container has">

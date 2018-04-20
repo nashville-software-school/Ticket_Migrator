@@ -14,13 +14,13 @@
           <hr>
           <p class="subtitle">Title: {{ backlog.name }}</p>
           <p class="subtitle">Source:
-            <a target="_blank" href="{{ backlog.source_repo.url }}">{{ backlog.source_repo.url }}</a>
+            <a target="_blank" class="sr-{{backlog.id}}" href="{{ backlog.source_repo.url }}">{{ backlog.source_repo.url }}</a>
           </p>
           <hr>
           <p>Actions:</p>
           <a href="../migrate/{{backlog.id}}">Migrate</a>
           <span> | </span>
-          <a id="delete">Delete</a>
+          <a id="{{backlog.id}}" class="_delete">Delete</a>
         </article>
       </div>
       <div class="tile is-parent">
@@ -44,7 +44,7 @@
         <span id="backlog_url"></span>
       </h2>
       <br>
-      <a href="../delete_backlog/{{backlog.id}}" id="confirm" class="button modal-button">Confirm</a>
+      <a href="../delete_backlog/" id="confirm" class="button modal-button">Confirm</a>
       <button id="cancel" class="button modal-button hide_modal_button">Cancel</button>
     </div>
   </div>
@@ -52,6 +52,6 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="{% static '/migrator_app/delete_backlog.js' %}"></script>
+<script src="{% static '/migrator_app/delete_modal.js' %}"></script>
 
 {% endblock %}

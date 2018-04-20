@@ -5,7 +5,7 @@ const addInput = () => {
             type='text' 
             name='target_repo' 
             placeholder='ie https://github.com/username/repo'
-            pattern='^https:\/\/github.com\/\S*\/\S*' 
+            pattern='^https:\/\/github.com\/\S*\/\S*(?<!/)' 
             title="Use full url with no whitespace - IE : https://github.com/PythonWizards/MigratorTesting"
         >`))
 }
