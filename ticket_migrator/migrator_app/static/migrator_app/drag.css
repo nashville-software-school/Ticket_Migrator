@@ -3,18 +3,9 @@
     justify-content: space-between;
 }
 
-.modal-background {
-    background-color: rgba(255,255,255,.86)
-}
-
 .dragula_box {
     width: 48%;
     margin-top: 20px;
-}
-
-.modal-button {
-    padding: 0 30px;
-    margin: 0 px;
 }
 
 .issue {

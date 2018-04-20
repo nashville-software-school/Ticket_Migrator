@@ -8,18 +8,18 @@
 
 <h1 class="is-size-2">Drag and drop issues to groom backlog</h1>
 <br>
-<h3>Source Repo :</h3>
+<h3>Source Repository :</h3>
 <div class="card has-background-dark has-text-white is-size-4">
     <div class="card-content ">{{source_repo.url}}</div>
 </div>
 <br>
 <!-- Creates groomed backlog for saving to database -->
-<form action="" method="POST">
+<form action="javascript:void(0);" onsubmit="on_submit()">
+    {% if issues %}  <!-- List of things in 'context' object in drag_view.html  -->
     {% csrf_token %}
     <h3> Backlog Name :</h3>
-    <input class="input" type="text" id="backlog_name" name="backlog_name" placeholder="Bangazon Web API">
-
-{% if issues %}  <!-- List of things in 'context' object in drag_view.html  -->
+    <input class="input" type="text" id="backlog_name" name="backlog_name" placeholder="Bangazon Web API" required>
+    
     <div class="drag_and_drop_container container has">
         <div id="dragBoxLeft" class="box dragula_box has-background-dark"></div>
         <div id="dragBoxRight" class="box dragula_box has-background-info">
@@ -31,15 +31,17 @@
                 </div>
             {% endfor %}
         </div>
-{% else %}
-        <p>No issues are available.</p>
-{% endif %}
     </div>
-
+    <input id="submit_button" class="button is-dark is-large" type="submit" value="Save Backlog">
+    
     <br>
     <input type="hidden" id="source_repo" name="source_repo" value="{{source_repo.id}}">
-    <input id="submit_button" class="button is-dark is-large" type="submit" value="Save Backlog">
+    <br>
+    
 </form>
+{% else %}
+    <h2 class="is-size-3">No issues are available.</h2>
+{% endif %}
 
 <div class="modal">
     <div class="modal-background"></div>

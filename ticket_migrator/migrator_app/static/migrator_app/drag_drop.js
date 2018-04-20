@@ -27,8 +27,7 @@ $("#modal-close").click(e => {
     $(".modal").removeClass('is-active')
 })
 
-$("#submit_button").click(e => {
-    e.preventDefault();
+const on_submit = () => {
     
   let issue_array = JSON.stringify(Object.assign([], results_container).map((x, i) => { return { id: parseInt(x.id), priority: i }}))
   let backlog_name = $("#backlog_name").val()
@@ -60,5 +59,5 @@ $("#submit_button").click(e => {
     $(".modal").toggleClass('is-active')
   });
 
-});
-//convert jQuery collection to array - map to convert results to a array of objects {id, priority}
+  return false
+};

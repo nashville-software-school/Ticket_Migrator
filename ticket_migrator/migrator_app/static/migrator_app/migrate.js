@@ -1,9 +1,22 @@
 const addInput = () => {
-    $('#target_repos_div').append($("<input class='target_repos_inputs' type='text' name='username' placeholder='ie https://github.com/username/repo'>"))
+    $('#target_repos_div').append($(`
+        <input
+            class="input target_repos_inputs" 
+            type="text" 
+            name="source_repo" 
+            pattern='^https:\\/\\/github.com\\/\\S*\\/\\S*(?<!/)'
+            title="Use full url with no whitespace - IE : https://github.com/PythonWizards/MigratorTesting"
+            placeholder="https://github.com/PythonWizards/MigratorTesting"
+            >
+    `))
 }
 
 const set_form_values = () => {
     get_target_repo_value()
+    if($('#target_repos')[0].value == "[]")
+    {
+        return false
+    }
     get_credentails()
     show_loading_gif_modal()
     return true
@@ -12,7 +25,6 @@ const set_form_values = () => {
 const show_loading_gif_modal = () => {
     $('#gifModal').toggleClass('is-active');
 }
-
 
 const get_target_repo_value = () => {
     $('#target_repos')[0].value = 

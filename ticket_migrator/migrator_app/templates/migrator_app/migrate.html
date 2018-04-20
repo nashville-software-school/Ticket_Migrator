@@ -1,3 +1,4 @@
+
 {% extends "./layout.html" %}
 {% load static %}
 
@@ -23,41 +24,31 @@
 <!-- Form to submit details to the server -->
 <br>
 <br>
-<form class="tile is-child is-dark" id="submit" action="../success/{{backlog.id}}" method="post" onsubmit="set_form_values()">
+<form class="tile is-child is-dark" id="submit" action="../success/{{backlog.id}}" method="post" onsubmit="return set_form_values()">
     {% csrf_token %}
-    
+
     <input type="hidden" id="backlog" name="backlog" value="{{backlog}}">
     <input id="credentials" type="hidden" name="credentials" value="">
     <input id="target_repos" type="hidden" name="target_repos" value="">
-</form>
 
     <label for="username">Github Username :</label>
-    <input id="username" type="text" name="username" placeholder="ie email@gmail.com">
+    <input id="username" type="text" name="username" placeholder="ie email@gmail.com" required>
     <br>
     <label for="password">Github Password :</label>
-    <input id="password" type="password" name="password" placeholder="password">
-    <br><br><br>
-<h2>Enter Target Repo Urls<span><button type="button" id="add">+</button></span></h2>
-<div id="target_repos_div"></div>
-<br>
+    <input id="password" type="password" name="password" placeholder="password" required>
+    <br>
 
     <br>
-<input form='submit' type="submit" value="OK">
-
-
-<!-- <div id="gifModal" class="modal">
-    <div class="modal-background">
-    <div class="modal-content">
-        <div class="box has-background-dark has-text-white has-text-centered">
-            <div class="ajaxLoading" id="loadingGif">
-                <h3>Loading...</h3>
-                <iframe src="https://giphy.com/embed/18pnjPivWerlK" width="480" height="429" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-            </div>
-        </div>
-    </div>
-    <button id="modal-close" class="modal-close is-large has-background-dark" aria-label="close"></button>
-    </div>
-  </div> -->
+    <h2>Enter Target Repository URLs
+        <span>
+            <button type="button" id="add">+</button>
+        </span>
+    </h2>
+    <br>
+    <div id="target_repos_div"></div>
+    <br>
+    <input form='submit' type="submit" value="OK">
+</form>
 
   <div id="gifModal" class="modal level">
         <div class="modal-background is-vcentered level"></div>
@@ -77,6 +68,4 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="{% static "migrator_app/migrate.js" %}"></script>
-
-{% endblock %}
+<script type="text/javascript" src="{% static "migrator_app/migrate.js" %}"></script> {% endblock %}
