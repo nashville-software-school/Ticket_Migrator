@@ -27,7 +27,7 @@ def drag_view(request, source_repo_id):
 
     #Make an object for each issue returned from GitHub API in 'context' format
     #Issues builds a dictionary object [comprehension] for each item in respone with key/values for html template
-    issues = [{"github_id":issue['id'],"issue_number":issue['number'],"issue_title":issue['title']} for issue in response]
+    issues = [{"github_id":issue['id'],"issue_number":issue['number'],"issue_title":issue['title']} for issue in reversed(response)]
     
     context = {
         "source_repo" : selected_source_repo,

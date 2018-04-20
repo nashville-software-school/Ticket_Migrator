@@ -1,5 +1,13 @@
 const addInput = () => {
-    $('#target_repos_div').append($("<input class='target_repos_inputs' type='text' name='username' placeholder='ie https://github.com/username/repo'>"))
+    $('#target_repos_div').append($(`
+        <input 
+            class='target_repos_inputs' 
+            type='text' 
+            name='target_repo' 
+            placeholder='ie https://github.com/username/repo'
+            pattern='^https:\/\/github.com\/\S*\/\S*' 
+            title="Use full url with no whitespace - IE : https://github.com/PythonWizards/MigratorTesting"
+        >`))
 }
 
 const set_form_values = () => {

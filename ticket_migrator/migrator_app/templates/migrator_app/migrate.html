@@ -1,7 +1,4 @@
-{% extends "./layout.html" %}
-{% load static %}
-
-{% block content %}
+{% extends "./layout.html" %} {% load static %} {% block content %}
 
 <h1>{{ backlog.name }}</h1>
 <h1>{{ backlog.source_repo.url }}</h1>
@@ -16,34 +13,36 @@
 <br>
 <form id="submit" action="../success/{{backlog.id}}" method="post" onsubmit="set_form_values()">
     {% csrf_token %}
-    
+
     <input type="hidden" id="backlog" name="backlog" value="{{backlog}}">
     <input id="credentials" type="hidden" name="credentials" value="">
     <input id="target_repos" type="hidden" name="target_repos" value="">
-</form>
 
     <label for="username">Github Username :</label>
-    <input id="username" type="text" name="username" placeholder="ie email@gmail.com">
+    <input id="username" type="text" name="username" placeholder="ie email@gmail.com" required>
     <br>
     <label for="password">Github Password :</label>
-    <input id="password" type="password" name="password" placeholder="password">
+    <input id="password" type="password" name="password" placeholder="password" required>
     <br>
-<h2>Enter Target Repo Urls<span><button type="button" id="add">+</button></span></h2>
-<div id="target_repos_div"></div>
-<br>
+    <h2>Enter Target Repo Urls
+        <span>
+            <button type="button" id="add">+</button>
+        </span>
+    </h2>
+    <div id="target_repos_div"></div>
+    <br>
 
     <br>
-<input form='submit' type="submit" value="OK">
+    <input form='submit' type="submit" value="OK">
+</form>
 
-    <div class="ajaxLoading" id="loadingGif" style="display:none;">
-        <h3>Loading...</h3>
-        <iframe src="https://giphy.com/embed/18pnjPivWerlK" width="480" height="429" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-    </div>
+<div class="ajaxLoading" id="loadingGif" style="display:none;">
+    <h3>Loading...</h3>
+    <iframe src="https://giphy.com/embed/18pnjPivWerlK" width="480" height="429" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</div>
 
 
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="{% static "migrator_app/migrate.js" %}"></script>
-
-{% endblock %}
+<script type="text/javascript" src="{% static "migrator_app/migrate.js" %}"></script> {% endblock %}

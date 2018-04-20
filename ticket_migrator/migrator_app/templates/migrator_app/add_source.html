@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<link href="{% static '/migrator_app/add_source.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static '/migrator_app/modal.css' %}" rel='stylesheet' type='text/css' />
 
 <br>
 <div class="tile is-parent is-vertical">
@@ -16,7 +16,15 @@
                 <div class="field-body">
                     <div class="field">
                         <p class="control">
-                            <input id="source_repo" class="input" type="text" name="source_repo" placeholder="https://github.com/PythonWizards/MigratorTesting">
+                            <input 
+                                id="source_repo" 
+                                class="input" 
+                                type="text" 
+                                name="source_repo" 
+                                pattern='^https:\/\/github.com\/\S*\/\S*'
+                                title="Use full url with no whitespace - IE : https://github.com/PythonWizards/MigratorTesting"
+                                placeholder="https://github.com/PythonWizards/MigratorTesting"
+                                required >
                         </p>
                     </div>
                 </div>
@@ -56,7 +64,7 @@
             <h2 class="is-size-1-desktop">Confirm Delete</h2>
             <h2 class="is-size-5-desktop"><span id="backlog_url"></span></h2>
             <br>
-            <button id="confirm" class="button modal-button">Confirm</button>
+            <a href="" id="confirm" class="button modal-button">Confirm</a>
             <button id="cancel" class="button modal-button hide_modal_button">Cancel</button>
         </div>
     </div>

@@ -1,35 +1,57 @@
-{% extends "./layout.html" %}
-
+{% extends "./layout.html" %} 
+{% load static %}
 {% block content %}
+
+<link href="{% static '/migrator_app/modal.css' %}" rel='stylesheet' type='text/css' />
 
 <br>
 <div class="tile is-ancestor">
-    <div class="tile is-vertical is-8">
-        <div class="tile">
-            <div class="tile is-parent is-vertical">
-                <article class="tile is-child notification is-dark">
-                    <p class="title has-text-centered">Backlog Details</p>
-                    <hr>
-                    <p class="subtitle">Title: {{ backlog.name }}</p>
-                    <p class="subtitle">Source: <a target="_blank" href="{{ backlog.source_repo.url }}">{{ backlog.source_repo.url }}</a></p>
-                    <hr>
-                    <p>Actions:</p>
-                    <a href="../migrate/{{backlog.id}}">Migrate</a>
-                    <span> | </span>
-                    <a href="../delete/{{backlog.id}">Delete</a>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child notification is-info">
-                     <p class="title has-text-centered">Issues (groomed)</p>
-                     <hr>
-                    {% for issue in issues %}
-                    <p class="subtitle">#{{issue.number}} : {{issue.title}}</p>
-                    {% endfor %}
-              </article>
-            </div>
-          </div>
-        </div>
+  <div class="tile is-vertical">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-dark">
+          <p class="title has-text-centered">Backlog Details</p>
+          <hr>
+          <p class="subtitle">Title: {{ backlog.name }}</p>
+          <p class="subtitle">Source:
+            <a target="_blank" href="{{ backlog.source_repo.url }}">{{ backlog.source_repo.url }}</a>
+          </p>
+          <hr>
+          <p>Actions:</p>
+          <a href="../migrate/{{backlog.id}}">Migrate</a>
+          <span> | </span>
+          <a id="delete">Delete</a>
+        </article>
       </div>
-{% endblock %}
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-info">
+          <p class="title has-text-centered">Issues (groomed)</p>
+          <hr> {% for issue in issues %}
+          <p class="subtitle">#{{issue.number}} : {{issue.title}}</p>
+          {% endfor %}
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box has-background-dark has-text-white has-text-centered">
+      <h2 class="is-size-1-desktop">Confirm Delete</h2>
+      <h2 class="is-size-5-desktop">
+        <span id="backlog_url"></span>
+      </h2>
+      <br>
+      <a href="../delete_backlog/{{backlog.id}}" id="confirm" class="button modal-button">Confirm</a>
+      <button id="cancel" class="button modal-button hide_modal_button">Cancel</button>
+    </div>
+  </div>
+  <button class="modal-close is-large has-background-dark hide_modal_button" aria-label="close"></button>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{% static '/migrator_app/delete_backlog.js' %}"></script>
+
+{% endblock %}
