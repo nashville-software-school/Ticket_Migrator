@@ -18,12 +18,12 @@ const set_form_values = () => {
         return false
     }
     get_credentails()
-    show_loading_gif()
+    show_loading_gif_modal()
     return true
 }
 
-const show_loading_gif = () => {
-    $('#loadingGif').show();
+const show_loading_gif_modal = () => {
+    $('#gifModal').toggleClass('is-active');
 }
 
 const get_target_repo_value = () => {

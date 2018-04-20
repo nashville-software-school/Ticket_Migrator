@@ -66,6 +66,7 @@ class robot():
         body = {"name": self.sprint_name,
                 "body": ""}
         response = requests.post(f'https://api.github.com/repos/{self.target_repo}/projects', json=body, headers=self.headers).json()
+        print(response)
         self.target_project_id = response['id']
 
         return self

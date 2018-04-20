@@ -1,17 +1,30 @@
-{% extends "./layout.html" %} {% load static %} {% block content %}
 
-<h1>{{ backlog.name }}</h1>
-<h1>{{ backlog.source_repo.url }}</h1>
+{% extends "./layout.html" %}
+{% load static %}
+
+{% block content %}
+<div class="column has-background-dark" style="border-radius:5px;margin-top:20px;">
+<h1 class="has-text-white">{{ backlog.name }}</h1>
+<br>
+<h1 class="has-text-white">{{ backlog.source_repo.url }}</h1>
+</div>
 <br>
 
-<!-- List the issues attached to the backlog -->
+<div class="column">
 {% for issue in issues %}
-<div>{{issue.number}} : {{issue.title}}</div>
+<div id="{{ issue.github_id }}" class='card issue notification is-info'>
+        <div class="card-content">
+            <div>{{issue.number}} : {{issue.title}}</div>
+        </div>
+</div>
 {% endfor %}
+</div>
+<!-- List the issues attached to the backlog -->
 
 <!-- Form to submit details to the server -->
 <br>
-<form id="submit" action="../success/{{backlog.id}}" method="post" onsubmit="return set_form_values()">
+<br>
+<form class="tile is-child is-dark" id="submit" action="../success/{{backlog.id}}" method="post" onsubmit="return set_form_values()">
     {% csrf_token %}
 
     <input type="hidden" id="backlog" name="backlog" value="{{backlog}}">
@@ -24,6 +37,7 @@
     <label for="password">Github Password :</label>
     <input id="password" type="password" name="password" placeholder="password" required>
     <br>
+
     <br>
     <h2>Enter Target Repository URLs
         <span>
@@ -36,10 +50,19 @@
     <input form='submit' type="submit" value="OK">
 </form>
 
-<div class="ajaxLoading" id="loadingGif" style="display:none;">
-    <h3>Loading...</h3>
-    <iframe src="https://giphy.com/embed/18pnjPivWerlK" width="480" height="429" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-</div>
+  <div id="gifModal" class="modal level">
+        <div class="modal-background is-vcentered level"></div>
+        <div class="modal-content">
+            <h2 class="is-size-2 has-text-white" style="text-align:center;margin-top:50px;">Loading...</h2>
+            <p class="image is-4by3">
+                <div class="ajaxLoading" id="loadingGif">
+                        
+                        <iframe src="https://giphy.com/embed/18pnjPivWerlK" width="480" height="429" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+          </p>
+        </div>
+        <button class="modal-close is-large" aria-label="close">Close</button>
+  </div>
 
 
 
