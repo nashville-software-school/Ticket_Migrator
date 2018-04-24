@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static '/migrator_app/node_modules/bulma/css/bulma.min.css'%}">
     <link rel="stylesheet" href="{% static '/migrator_app/main.css'%}">
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script src="{% static '/migrator_app/main.js' %}"></script>
   </head>
   <body>
     <section class="hero is-dark is-bold">
@@ -20,6 +21,9 @@
             <h2 class="subtitle">
               A github<sup style="font-size: 10px">&copy;</sup> automator
             </h2>
+            <form action="" onsubmit="checkToken()" id="token_new">
+            <input type="text" id="token_input_field"><button class="button" id="token_field_submit">add</button>
+          </form>
             <a href="/"><img id="bar-img" src="{% static '/migrator_app/nss.svg'%}" alt=""></a>
           </div>
         </div>

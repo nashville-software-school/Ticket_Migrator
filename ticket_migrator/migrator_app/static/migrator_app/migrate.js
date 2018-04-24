@@ -12,7 +12,8 @@ const addInput = () => {
 }
 
 const set_form_values = () => {
-    const userToken = localStorage.getItem("Authorization")
+    const userToken = JSON.parse(localStorage.getItem("Authorization"))
+    
     //check for token
     if ( userToken === userToken) {
         //Proceed with Success
