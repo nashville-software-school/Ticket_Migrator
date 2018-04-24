@@ -22,14 +22,18 @@
             <h2 class="subtitle">
               A github<sup style="font-size: 10px">&copy;</sup> automator
             </h2>
+            <!-- user not token authenticated div -->
           <div id="auth_false_show">
-            <form action="" onsubmit="checkToken()" id="token_new">
+            <form onsubmit="checkToken()" id="token_new">
               <input type="text" id="token_input_field"><button class="button" id="token_field_submit">add</button>
             </form>
           </div>
+          <!-- end -->
+          <!-- user authenticated, showing a check mark div -->
             <div id="auth_true_show">
                 <h2>Token: </h2><img src="../../static/migrator_app/auth_checkmark.png" alt="" id="authenticated_user_image">
             </div>
+          <!-- end -->
             <a href="/"><img id="bar-img" src="{% static '/migrator_app/nss.svg'%}" alt=""></a>
           </div>
         </div>
