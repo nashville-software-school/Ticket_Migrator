@@ -22,7 +22,7 @@
 <!-- List the issues attached to the backlog -->
 
 <!-- Form to submit details to the server -->
-<br>
+<hr>
 <br>
 <form class="tile is-child is-dark" id="submit" action="../success/{{backlog.id}}" method="post" onsubmit="return set_form_values()">
     {% csrf_token %}
@@ -35,6 +35,7 @@
     <div id="target_repos_div"></div>
     <br>
     <input id="okButton" class="button" form='submit' type="submit" value="OK"></form>
+    <hr>
 </form>
   <div id="gifModal" class="modal level">
         <div class="modal-background is-vcentered level"></div>

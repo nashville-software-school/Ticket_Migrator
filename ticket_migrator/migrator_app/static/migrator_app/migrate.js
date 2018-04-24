@@ -12,9 +12,12 @@ const addInput = () => {
 }
 
 const set_form_values = () => {
+    const userToken = localStorage.getItem("Authorization")
     //check for token
-    if (localStorage.getItem("Authorization") === UserToken) {
+    if ( userToken === userToken) {
         //Proceed with Success
+      } else if (userToken === null) {
+          return console.log("Unable to get Token from local Storage");
       }
     //if none alert "set token" return false
 
