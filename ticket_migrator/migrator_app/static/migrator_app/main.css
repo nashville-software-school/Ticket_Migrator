@@ -25,3 +25,9 @@
 .target_repos_inputs {
     margin: 5px;
 }
+
+#authenticated_user_image {
+    height: 32px;
+    width: 32px;
+    float: left ;
+}

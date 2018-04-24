@@ -8,6 +8,7 @@
     <title>NSS - Issue Migrator</title>
     <link rel="stylesheet" href="{% static '/migrator_app/node_modules/bulma/css/bulma.min.css'%}">
     <link rel="stylesheet" href="{% static '/migrator_app/main.css'%}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <script src="{% static '/migrator_app/main.js' %}"></script>
   </head>
@@ -21,9 +22,14 @@
             <h2 class="subtitle">
               A github<sup style="font-size: 10px">&copy;</sup> automator
             </h2>
+          <div id="auth_false_show">
             <form action="" onsubmit="checkToken()" id="token_new">
-            <input type="text" id="token_input_field"><button class="button" id="token_field_submit">add</button>
-          </form>
+              <input type="text" id="token_input_field"><button class="button" id="token_field_submit">add</button>
+            </form>
+          </div>
+            <div id="auth_true_show">
+                <h2>Token: </h2><img src="../../static/migrator_app/auth_checkmark.png" alt="" id="authenticated_user_image">
+            </div>
             <a href="/"><img id="bar-img" src="{% static '/migrator_app/nss.svg'%}" alt=""></a>
           </div>
         </div>
