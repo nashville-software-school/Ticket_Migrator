@@ -12,6 +12,12 @@ const addInput = () => {
 }
 
 const set_form_values = () => {
+    //check for token
+    if (localStorage.getItem("Authorization") === UserToken) {
+        //Proceed with Success
+      }
+    //if none alert "set token" return false
+
     get_target_repo_value()
     if($('#target_repos')[0].value == "[]")
     {
