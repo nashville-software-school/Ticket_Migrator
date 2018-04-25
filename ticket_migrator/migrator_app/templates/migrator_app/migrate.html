@@ -22,34 +22,21 @@
 <!-- List the issues attached to the backlog -->
 
 <!-- Form to submit details to the server -->
-<br>
+<hr>
 <br>
 <form class="tile is-child is-dark" id="submit" action="../success/{{backlog.id}}" method="post" onsubmit="return set_form_values()">
     {% csrf_token %}
 
-    <input type="hidden" id="backlog" name="backlog" value="{{backlog}}">
-    <input id="credentials" type="hidden" name="credentials" value="">
-    <input id="target_repos" type="hidden" name="target_repos" value="">
-
-    <label for="username">Github Username :</label>
-    <input id="username" type="text" name="username" placeholder="ie email@gmail.com" required>
-    <br>
-    <label for="password">Github Password :</label>
-    <input id="password" type="password" name="password" placeholder="password" required>
-    <br>
-
-    <br>
     <h2>Enter Target Repository URLs
         <span>
-            <button type="button" id="add">+</button>
+            <a href="#okButton"><button class="button" type="button" id="add">+</button></a>
         </span>
     </h2>
-    <br>
     <div id="target_repos_div"></div>
     <br>
-    <input form='submit' type="submit" value="OK">
+    <input id="okButton" class="button" form='submit' type="submit" value="OK"></form>
+    <hr>
 </form>
-
   <div id="gifModal" class="modal level">
         <div class="modal-background is-vcentered level"></div>
         <div class="modal-content">
