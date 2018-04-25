@@ -28,15 +28,20 @@
         <!-- user not token authenticated div -->
         <div id="auth_false_show" class="header--auth hidden">
           <form onsubmit="return addToken()" id="token_new">
-            <input type="text" id="token_input_field" placeholder="Click to enter token">
+            <input type="text" id="token_input_field" placeholder="Click to enter token" pattern="^[a-zA-Z0-9]{40}$" title="Github PAC Tokens are 40 alpha numeric charachters"
+              required>
             <button class="button addTokenButton" id="token_field_submit">Add Token</button>
           </form>
         </div>
         <!-- end -->
         <!-- user authenticated, showing a check mark div -->
         <div id="auth_true_show" class="header--auth hidden">
-            <h2><strong>Authorized</strong><img src="../../static/migrator_app/auth_checkmark.png" alt="" id="authenticated_user_image" height="30px;" width="30px;"></h2>
-            <br>
+          <h2>
+            <strong>Authorized</strong>
+            <img src="../../static/migrator_app/auth_checkmark.png" alt="" id="authenticated_user_image"
+              height="30px;" width="30px;">
+          </h2>
+          <br>
           <form onsubmit="return removeToken()" id="token_new">
             <button class="button removeTokenButton" id="token_field_submit">Remove Token</button>
           </form>

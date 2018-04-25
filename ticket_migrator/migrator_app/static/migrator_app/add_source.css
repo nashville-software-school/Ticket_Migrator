@@ -1,0 +1,8 @@
+.source_repo_list:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.delete {
+  top: 10px;
+  right: 10px;
+}
