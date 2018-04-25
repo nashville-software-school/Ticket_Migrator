@@ -2,44 +2,55 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>NSS - Issue Migrator</title>
-    <link rel="stylesheet" href="{% static '/migrator_app/node_modules/bulma/css/bulma.min.css'%}">
-    <link rel="stylesheet" href="{% static '/migrator_app/main.css'%}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <script src="{% static '/migrator_app/main.js' %}"></script>
-  </head>
-  <body>
-    <section class="hero is-dark is-bold">
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title">
-              Instructor Issue Migrator
-            </h1>
-            <h2 class="subtitle">
-              A github<sup style="font-size: 10px">&copy;</sup> automator
-            </h2>
-            <!-- user not token authenticated div -->
-          <div id="auth_false_show">
-            <form onsubmit="checkToken()" id="token_new">
-              <input type="text" id="token_input_field"><button class="button" id="token_field_submit">add</button>
-            </form>
-          </div>
-          <!-- end -->
-          <!-- user authenticated, showing a check mark div -->
-            <div id="auth_true_show">
-                <h2>Token: </h2><img src="../../static/migrator_app/auth_checkmark.png" alt="" id="authenticated_user_image">
-            </div>
-          <!-- end -->
-            <a href="/"><img id="bar-img" src="{% static '/migrator_app/nss.svg'%}" alt=""></a>
-          </div>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NSS - Issue Migrator</title>
+  <link rel="stylesheet" href="{% static '/migrator_app/node_modules/bulma/css/bulma.min.css'%}">
+  <link rel="stylesheet" href="{% static '/migrator_app/main.css'%}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <script src="{% static '/migrator_app/main.js' %}"></script>
+</head>
+
+<body>
+  <section class="hero is-dark is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Instructor Issue Migrator
+        </h1>
+        <h2 class="subtitle">
+          A github
+          <sup style="font-size: 10px">&copy;</sup> automator
+        </h2>
+        <!-- user not token authenticated div -->
+        <div id="auth_false_show" class="header--auth hidden">
+          <form onsubmit="return addToken()" id="token_new">
+            <input type="text" id="token_input_field">
+            <button class="button" id="token_field_submit">add</button>
+          </form>
         </div>
-      </section>
-      <div class="container" id="content">
-        {% block content %}{% endblock %}
+        <!-- end -->
+        <!-- user authenticated, showing a check mark div -->
+        <div id="auth_true_show" class="header--auth hidden">
+          <form onsubmit="return removeToken()" id="token_new">
+            <h2>Token: </h2>
+            <img src="../../static/migrator_app/auth_checkmark.png" alt="" id="authenticated_user_image">
+            <button class="button" id="token_field_submit">Remove</button>
+          </form>
+        </div>
+        <!-- end -->
+        <a href="/">
+          <img id="bar-img" src="{% static '/migrator_app/nss.svg'%}" alt="">
+        </a>
+      </div>
     </div>
-  </body>
+  </section>
+  <div class="container" id="content">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+
 </html>

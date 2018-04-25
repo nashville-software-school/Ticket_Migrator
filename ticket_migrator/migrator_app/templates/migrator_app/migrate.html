@@ -1,23 +1,19 @@
-
-{% extends "./layout.html" %}
-{% load static %}
-
-{% block content %}
+ {% extends "./layout.html" %} {% load static %} {% block content %}
 <div class="column has-background-dark" style="border-radius:5px;margin-top:20px;">
-<h1 class="has-text-white">{{ backlog.name }}</h1>
-<br>
-<h1 class="has-text-white">{{ backlog.source_repo.url }}</h1>
+    <h1 class="has-text-white">{{ backlog.name }}</h1>
+    <br>
+    <h1 class="has-text-white">{{ backlog.source_repo.url }}</h1>
 </div>
 <br>
 
 <div class="column">
-{% for issue in issues %}
-<div id="{{ issue.github_id }}" class='card issue notification is-info'>
+    {% for issue in issues %}
+    <div id="{{ issue.github_id }}" class='card issue notification is-info'>
         <div class="card-content">
             <div>{{issue.number}} : {{issue.title}}</div>
         </div>
-</div>
-{% endfor %}
+    </div>
+    {% endfor %}
 </div>
 <!-- List the issues attached to the backlog -->
 
@@ -29,30 +25,38 @@
 
     <h2>Enter Target Repository URLs
         <span>
-            <a href="#okButton"><button class="button" type="button" id="add">+</button></a>
+            <a href="#okButton">
+                <button class="button" type="button" id="add">+</button>
+            </a>
         </span>
     </h2>
     <div id="target_repos_div"></div>
     <br>
-    <input id="okButton" class="button" form='submit' type="submit" value="OK"></form>
-    <hr>
+
+    <input type="hidden" id="backlog" name="backlog" value="{{backlog}}">
+    <input type="hidden" id="credentials" name="credentials" value="">
+    <input type="hidden" id="target_repos" name="target_repos" value="">
+
+    <input id="okButton" class="button" form='submit' type="submit" value="OK">
 </form>
-  <div id="gifModal" class="modal level">
-        <div class="modal-background is-vcentered level"></div>
-        <div class="modal-content">
-            <h2 class="is-size-2 has-text-white" style="text-align:center;margin-top:50px;">Loading...</h2>
-            <p class="image is-4by3">
-                <div class="ajaxLoading" id="loadingGif">
-                        
-                        <iframe src="https://giphy.com/embed/18pnjPivWerlK" width="480" height="429" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-                </div>
-          </p>
-        </div>
-        <button class="modal-close is-large" aria-label="close">Close</button>
-  </div>
+<hr>
+
+<div id="gifModal" class="modal level">
+    <div class="modal-background is-vcentered level"></div>
+    <div class="modal-content">
+        <h2 class="is-size-2 has-text-white" style="text-align:center;margin-top:50px;">Loading...</h2>
+        <p class="image is-4by3">
+            <div class="ajaxLoading" id="loadingGif">
+
+                <iframe src="https://giphy.com/embed/18pnjPivWerlK" width="480" height="429" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+            </div>
+        </p>
+    </div>
+    <button class="modal-close is-large" aria-label="close">Close</button>
+</div>
 
 
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="{% static "migrator_app/migrate.js" %}"></script> {% endblock %}
+<script type="text/javascript" src="{% static 'migrator_app/migrate.js' %}"></script> {% endblock %}

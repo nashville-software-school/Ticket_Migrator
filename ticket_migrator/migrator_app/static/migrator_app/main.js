@@ -1,27 +1,39 @@
 //This function supposedly handles adding a token to local storage from the
 // input box in layout.html. Checks for any matches and nulls
-checkToken = () => {
+const addToken = () => {
   // set the value of the fireld and the value of the localstorage, if any, into variables.
-  const tokenInputValue = document.getElementById('token_input_field').value;
-  const tokenAlreadyStored = JSON.parse(localStorage.getItem('Authorization'));
+  const tokenInputValue = document.getElementById("token_input_field").value;
+  //throw it in
+  localStorage.setItem("Authorization", JSON.stringify(tokenInputValue));
 
-  if (
-    (tokenInputValue != tokenAlreadyStored && tokenInputValue != null) ||
-    tokenInputValue === tokenAlreadyStored
-  ) {
-    //throw it in
-    localStorage.setItem('Authorization', JSON.stringify(tokenInputValue));
-    $('#token_field_submit').click(e => {
-      $("#auth_true_show'").toggleClass('is-active');
-    });
-    console.log('token that was just saved: ', tokenInputValue);
-  } else if (tokenInputValue === null) {
-    $('#token_field_submit').click(e => {
-      $("#auth_false_show'").toggleClass('is-active');
-    });
-    console.log('You are null');
-  }
+  swap_displayed_div();
+
+  return false;
 };
+
+const removeToken = () => {
+  localStorage.removeItem("Authorization");
+  swap_displayed_div();
+  return false;
+};
+
+const swap_displayed_div = () => {
+  $(".header--auth").toggleClass("hidden");
+};
+
+const verify_token = () => {
+  return JSON.parse(localStorage.getItem("Authorization")) != null
+    ? true
+    : false;
+};
+
+$(document).ready(() => {
+  if (verify_token()) {
+    $("#auth_true_show").toggleClass("hidden");
+  } else {
+    $("#auth_false_show").toggleClass("hidden");
+  }
+});
 
 // else if (tokenInputValue === tokenAlreadyStored) {
 //     hideShowFunction.showAuthorized();
