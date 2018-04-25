@@ -10,14 +10,14 @@ class issue():
         self.target_id = None
 
 class automator():
-    def __init__(self, selected_backlog, target_repos, base64_auth):
+    def __init__(self, selected_backlog, target_repos, authToken):
         self.source_issues = None
         self.sprint_name = selected_backlog.name
         self.source_repo = selected_backlog.source_repo.get_repo()
         self.issue_array = sorted(list(selected_backlog.backlog_issues_set.all().values()),key=itemgetter('priority'))
         self.target_repos = target_repos
         self.headers = {'Accept': 'application/vnd.github.inertia-preview+json',
-                        'Authorization': f'Basic {base64_auth}'}
+                        'Authorization': f'token {authToken}'}
 
     def get_issues(self):
 
