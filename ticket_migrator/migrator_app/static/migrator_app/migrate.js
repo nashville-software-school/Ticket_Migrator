@@ -15,12 +15,14 @@ const addInput = () => {
 
 const set_form_values = () => {
   if (!get_auth_token()) {
-    alert("Please make sure you have saved a token to local storage");
+    $("#ErrorHandler").toggleClass("is-active");
+    $("#ErrorMessage").html("Please make sure you have saved a token to local storage");
     return false;
   }
 
   if (!get_target_repo_value()) {
-    alert("Please make sure you have entered in target repos");
+    $("#ErrorHandler").toggleClass("is-active");
+    $("#ErrorMessage").html("Please make sure you have entered in target repos");
     return false;
   }
 

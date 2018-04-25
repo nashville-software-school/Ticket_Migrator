@@ -53,6 +53,9 @@
       </div>
     </div>
   </section>
+  <div id="ErrorHandler" class="notification is-link">
+      <button id="ErrorMessage" class="delete" onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'></button>
+    </div>
   <div class="container" id="content">
     {% block content %}{% endblock %}
   </div>
