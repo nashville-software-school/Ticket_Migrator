@@ -1,12 +1,7 @@
-{% extends "./layout.html" %} 
-{% load static %}
-{% block content %}
-<style>
-     .source_repo_list:hover{background-color:rgba(255,255,255,.5)}
-     .delete{top:10px; right:10px;}
+{% extends "./layout.html" %} {% load static %} {% block content %}
 
-</style>
 <link href="{% static '/migrator_app/modal.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static '/migrator_app/add_source.css' %}" rel='stylesheet' type='text/css' />
 
 <br>
 <div class="tile is-parent is-vertical">
@@ -16,29 +11,22 @@
         <form action="../addsource/" method="post">
             {% csrf_token %}
             <div class="field is-horizontal">
-                
+
                 <div class="field-body">
                     <div class="field">
                         <p class="control">
-                            <input 
-                                id="source_repo" 
-                                class="input" 
-                                type="text" 
-                                name="source_repo" 
-                                pattern='^https:\/\/github.com\/\S*\/\S*(?<!/)'
-                                title="Use full url with no whitespace - IE : https://github.com/PythonWizards/MigratorTesting"
-                                placeholder="https://github.com/PythonWizards/MigratorTesting"
-                                required >
+                            <input id="source_repo" class="input" type="text" name="source_repo" pattern='^https:\/\/github.com\/\S*\/\S*(?<!/)' title="Use full url with no whitespace - IE : https://github.com/PythonWizards/MigratorTesting"
+                                placeholder="https://github.com/PythonWizards/MigratorTesting" required>
                         </p>
                     </div>
                 </div>
-                
+
                 <div class="field-label is-small">
                     <label class="label">
                         <input class="button is-white is-medium" type="submit" value="SAVE">
                     </label>
                 </div>
-                
+
             </div>
         </form>
     </article>
@@ -66,7 +54,9 @@
     <div class="modal-content">
         <div class="box has-background-dark has-text-white has-text-centered">
             <h2 class="is-size-1-desktop">Confirm Delete</h2>
-            <h2 class="is-size-5-desktop"><span id="backlog_url"></span></h2>
+            <h2 class="is-size-5-desktop">
+                <span id="backlog_url"></span>
+            </h2>
             <br>
             <a href="../delete_repo/" id="confirm" class="button modal-button">Confirm</a>
             <button id="cancel" class="button modal-button hide_modal_button">Cancel</button>
@@ -75,6 +65,4 @@
     <button class="modal-close is-large has-background-dark hide_modal_button" aria-label="close"></button>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="{% static '/migrator_app/delete_modal.js' %}"></script>
-{% endblock %}
+<script src="{% static '/migrator_app/delete_modal.js' %}"></script> {% endblock %}

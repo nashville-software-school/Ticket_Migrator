@@ -1,7 +1,4 @@
-{% extends "./layout.html" %}
-{% load static %}
-
-{% block content %}
+{% extends "./layout.html" %} {% load static %} {% block content %}
 
 <link href="{% static '/migrator_app/drag.css' %}" rel='stylesheet' type='text/css' />
 <link href="{% static '/migrator_app/node_modules/dragula/dist/dragula.min.css' %}" rel='stylesheet' type='text/css' />
@@ -15,39 +12,40 @@
 <br>
 <!-- Creates groomed backlog for saving to database -->
 <form action="javascript:void(0);" onsubmit="on_submit()">
-    {% if issues %}  <!-- List of things in 'context' object in drag_view.html  -->
+    {% if issues %}
+    <!-- List of things in 'context' object in drag_view.html  -->
     {% csrf_token %}
-    <h3> Backlog Name :</h3>
+    <h3> Sprint Name :</h3>
     <input class="input" type="text" id="backlog_name" name="backlog_name" placeholder="Bangazon Web API" required>
-    
+
     <div class="drag_and_drop_container container has">
         <div id="dragBoxLeft" class="box dragula_box has-background-dark"></div>
         <div id="dragBoxRight" class="box dragula_box has-background-info">
             {% for issue in issues %}
-                <div id="{{ issue.github_id }}" class='card issue'>
-                    <div class="card-content">
-                            {{ issue.issue_number }} : {{ issue.issue_title }}
-                    </div>
+            <div id="{{ issue.github_id }}" class='card issue'>
+                <div class="card-content">
+                    {{ issue.issue_number }} : {{ issue.issue_title }}
                 </div>
+            </div>
             {% endfor %}
         </div>
     </div>
-    <input id="submit_button" class="button is-dark is-large" type="submit" value="Save Backlog">
-    
+    <input id="submit_button" class="button is-dark is-large" type="submit" value="Save Sprint">
+
     <br>
     <input type="hidden" id="source_repo" name="source_repo" value="{{source_repo.id}}">
     <br>
-    
+
 </form>
 {% else %}
-    <h2 class="is-size-3">No issues are available.</h2>
+<h2 class="is-size-3">No issues are available.</h2>
 {% endif %}
 
 <div class="modal">
     <div class="modal-background"></div>
     <div class="modal-content">
         <div class="box has-background-dark has-text-white has-text-centered">
-            <h2 class="is-size-1-desktop">Backlog Saved</h2>
+            <h2 class="is-size-1-desktop">Sprint Saved</h2>
             <br>
             <button id="home_button" class="button modal-button">Home</button>
             <button id="create_button" class="button modal-button">Create Additional</button>
@@ -55,13 +53,7 @@
         </div>
     </div>
     <button id="modal-close" class="modal-close is-large has-background-dark" aria-label="close"></button>
-  </div>
+</div>
 
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-<script type="text/javascript" src="{% static "/migrator_app/node_modules/dragula/dist/dragula.min.js" %}"></script>
-<script type="text/javascript" src="{% static "/migrator_app/drag_drop.js" %}"></script>
-
-{% endblock %}
+<script type="text/javascript" src="{% static " /migrator_app/node_modules/dragula/dist/dragula.min.js " %}"></script>
+<script type="text/javascript" src="{% static " /migrator_app/drag_drop.js " %}"></script> {% endblock %}

@@ -28,7 +28,8 @@
         <!-- user not token authenticated div -->
         <div id="auth_false_show" class="header--auth hidden">
           <form onsubmit="return addToken()" id="token_new">
-            <input type="text" id="token_input_field">
+            <input type="text" id="token_input_field" pattern="^[a-zA-Z0-9]{40}$" title="Github PAC Tokens are 40 alpha numeric charachters"
+              required>
             <button class="button" id="token_field_submit">add</button>
           </form>
         </div>
