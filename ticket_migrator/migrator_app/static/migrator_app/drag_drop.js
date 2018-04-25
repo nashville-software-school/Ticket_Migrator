@@ -17,15 +17,17 @@ $("#migrate_button").click(e => {
 })
 
 $("#create_button").click(e => {
-    $("#modal").hide()
+    $(".modal").removeClass('is-active')
     $("#backlog_name")[0].value = ''
     let r = $('.issue').remove()
     $(dragula_obj.containers[1]).append(r)
-
 })
 
-$("#submit_button").click(e => {
-    e.preventDefault();
+$("#modal-close").click(e => {
+    $(".modal").removeClass('is-active')
+})
+
+const on_submit = () => {
     
   let issue_array = JSON.stringify(Object.assign([], results_container).map((x, i) => { return { id: parseInt(x.id), priority: i }}))
   let backlog_name = $("#backlog_name").val()
@@ -54,8 +56,8 @@ $("#submit_button").click(e => {
     data: data
   }).done(response => {
     saved_backlog = response.backlog_id
-    $("#modal").show()
+    $(".modal").toggleClass('is-active')
   });
 
-});
-//convert jQuery collection to array - map to convert results to a array of objects {id, priority}
+  return false
+};

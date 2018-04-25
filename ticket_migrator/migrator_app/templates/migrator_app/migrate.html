@@ -1,41 +1,58 @@
-{% extends "./layout.html" %}
-{% load static %}
-
-{% block content %}
-
-<h1>{{ backlog.name }}</h1>
-<h1>{{ backlog.source_repo.url }}</h1>
+ {% extends "./layout.html" %} {% load static %} {% block content %}
+<div class="column has-background-dark" style="border-radius:5px;margin-top:20px;">
+    <h1 class="has-text-white">{{ backlog.name }}</h1>
+    <br>
+    <h1 class="has-text-white">{{ backlog.source_repo.url }}</h1>
+</div>
 <br>
 
+<div class="column">
+    {% for issue in issues %}
+    <div id="{{ issue.github_id }}" class='card issue notification is-info'>
+        <div class="card-content">
+            <div>{{issue.number}} : {{issue.title}}</div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 <!-- List the issues attached to the backlog -->
-{% for issue in issues %}
-<div>{{issue.number}} : {{issue.title}}</div>
-{% endfor %}
 
 <!-- Form to submit details to the server -->
+<hr>
 <br>
-<form id="submit" action="../success/{{backlog.id}}" method="post" onsubmit="set_form_values()">
+<form class="tile is-child is-dark" id="submit" action="../success/{{backlog.id}}" method="post" onsubmit="return set_form_values()">
     {% csrf_token %}
-    
+
+    <h2>Enter Target Repository URLs
+        <span>
+            <a href="#okButton">
+                <button class="button" type="button" id="add">+</button>
+            </a>
+        </span>
+    </h2>
+    <div id="target_repos_div"></div>
+    <br>
+
     <input type="hidden" id="backlog" name="backlog" value="{{backlog}}">
-    <input id="credentials" type="hidden" name="credentials" value="">
-    <input id="target_repos" type="hidden" name="target_repos" value="">
+    <input type="hidden" id="credentials" name="credentials" value="">
+    <input type="hidden" id="target_repos" name="target_repos" value="">
+
+    <input id="okButton" class="button" form='submit' type="submit" value="OK">
 </form>
+<hr>
 
-    <label for="username">Github Username :</label>
-    <input id="username" type="text" name="username" placeholder="ie email@gmail.com">
-    <br>
-    <label for="password">Github Password :</label>
-    <input id="password" type="password" name="password" placeholder="password">
-    <br>
-<h2>Enter Target Repo Urls<span><button type="button" id="add">+</button></span></h2>
-<div id="target_repos_div"></div>
-<br>
+<div id="gifModal" class="modal level">
+    <div class="modal-background is-vcentered level"></div>
+    <div class="modal-content">
+        <h2 class="is-size-2 has-text-white" style="text-align:center;margin-top:50px;">Loading...</h2>
+        <p class="image is-4by3">
+            <div class="ajaxLoading" id="loadingGif">
 
-    <br>
-<input form='submit' type="submit" value="OK">
+                <iframe src="https://giphy.com/embed/18pnjPivWerlK" width="480" height="429" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+            </div>
+        </p>
+    </div>
+    <button class="modal-close is-large" aria-label="close">Close</button>
+</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="{% static "migrator_app/migrate.js" %}"></script>
-
-{% endblock %}
+<script type="text/javascript" src="{% static 'migrator_app/migrate.js' %}"></script> {% endblock %}

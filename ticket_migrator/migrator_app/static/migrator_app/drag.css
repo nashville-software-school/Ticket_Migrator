@@ -1,84 +1,21 @@
 .drag_and_drop_container {
     display: flex;
-    justify-content: space-evenly
+    justify-content: space-between;
 }
 
-#dragBoxLeft {
-    background-color: goldenrod;
-}
-
-#dragBoxRight {
-    background-color: firebrick;
+.dragula_box {
+    width: 48%;
+    margin-top: 20px;
 }
 
 .issue {
-    background-color:rgba(255,255,255,.5);
-    padding: 5px;
+    height: 80;
+    margin-top: 10px;
+    background-color: rgba(255,255,255,.86);
     border-radius: 5px;
-    margin: 5px
 }
 
+.card-content {
+    padding: .4rem;
 
-/* MODAL STYLES */
-
-#modal {
-    display: none;
-    position: fixed;
-    width: 80%;
-    height: 500px;
-    z-index: 1;
-    overflow: auto;
-    background-color: white;
-    box-shadow: 20px 20px 20px rgba(25,25,25,.50);
-    border-radius: 5px;
-    top: 100px;
-    left: 10%;
-    border: solid 2px black;
-}
-
-#modal-content {
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 1.5s;
-    animation-name: animatetop;
-    animation-duration: 1.5s
-}
-
-#modalContent {
-    margin: 20px;
-}
-
-#modalContent button {
-    margin-top: 20px;
-    background-color: black;
-    color: white; 
-}
-    
-
-#modalContent p {
-    /* margin: 30px auto; */
-    display: block;
-    width: 80%;
-    text-align: justify;
-    font-size: 1.25em;
-}
-
-.modal-header {
-    display: block;
-}
-
-.modal-header div {
-    margin-bottom: 20px;
-}
-
-.modal-header,
-#modalAuthor {
-    padding: 2px 16px;
-    background-color: black;
-    color: white;
-}
-
-#modalTitle {
-    font-size: 1.5em;
-    text-align: right;
-    color: white;
 }
