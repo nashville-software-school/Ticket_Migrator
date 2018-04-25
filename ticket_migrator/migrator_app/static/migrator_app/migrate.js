@@ -52,4 +52,4 @@ const get_auth_token = () => {
 
 $("#add").click(e => addInput());
 
-$(document).ready(addInput());
+$(document).ready(addInput());  
