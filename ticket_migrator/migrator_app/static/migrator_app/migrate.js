@@ -33,14 +33,13 @@ const show_loading_gif_modal = () => {
 };
 
 const get_target_repo_value = () => {
-  return ($("#target_repos_div")[0].value =
-    JSON.stringify(
-      Object.assign([], $(".target_repos"))
-        .map(x => x.value.split("https://github.com/")[1])
-        .filter(x => x != null)
-    ) != "[]"
-      ? true
-      : false);
+  return ($("#target_repos")[0].value = JSON.stringify(
+    Object.assign([], $(".target_repos_inputs"))
+      .map(x => x.value.split("https://github.com/")[1])
+      .filter(x => x != null)
+  )) != "[]"
+    ? true
+    : false;
 };
 
 const get_auth_token = () => {
