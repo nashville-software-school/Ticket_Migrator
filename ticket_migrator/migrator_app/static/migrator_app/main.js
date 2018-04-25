@@ -18,7 +18,7 @@ const removeToken = () => {
 };
 
 const swap_displayed_div = () => {
-  $(".header--auth").toggleClass("hidden");
+  $(".header--auth").toggleClass("hidden"); 
 };
 
 const verify_token = () => {
