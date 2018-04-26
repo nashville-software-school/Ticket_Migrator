@@ -23,9 +23,7 @@ const swap_displayed_div = () => {
 
 // Checks for the presence of a token and returns a bool value
 const verify_token = () => {
-  return JSON.parse(localStorage.getItem("Authorization")) != null
-    ? true
-    : false;
+  return localStorage.getItem("Authorization") != null ? true : false;
 };
 
 // On page load - interpolate the bool value returned from verify token function

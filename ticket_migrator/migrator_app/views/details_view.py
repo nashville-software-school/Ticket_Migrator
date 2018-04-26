@@ -4,12 +4,13 @@ from django.template import loader
 from migrator_app.models import *
 
 from operator import itemgetter
+from django.contrib.auth.decorators import login_required
 import requests
 import base64
 import json
 
 
-
+@login_required
 def details(request, backlog_id):
     
     selected_backlog = get_object_or_404(backlog_model.Backlog, pk=backlog_id)
