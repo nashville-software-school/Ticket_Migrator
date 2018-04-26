@@ -45,3 +45,11 @@
   height: 35px;
   border-radius: 2px;
 }
+
+#ErrorHandler {
+  width: 500px;
+  position: fixed;
+  margin-left: 25%;
+  margin-top: -130px;
+  z-index: 2;
+}

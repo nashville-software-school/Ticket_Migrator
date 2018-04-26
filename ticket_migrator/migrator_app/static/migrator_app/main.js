@@ -35,6 +35,12 @@ $(document).ready(() => {
   }
 });
 
+// Warning box functionality i dunno
+// const removeWarningBox = () => {
+//   $("#ErrorHandler").click(e => {
+//   $(".delete").removeClass('hidden')
+// })}
+
 // else if (tokenInputValue === tokenAlreadyStored) {
 //     hideShowFunction.showAuthorized();
 //     // c-log for developer info

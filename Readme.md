@@ -18,13 +18,15 @@ Assuming you have a grasp of terminal and have a package manager (This walkthrou
 ```
 git clone origin git@github.com:PythonWizards/Ticket_Migrator.git
 ```
-2. After the download ends, type `cd .ticket_migrator\migrator_app\static\migrator_app`, then type  `npm i`. This will install any package dependencies. Navigate back to the first directory you where in.
+2. After the download ends, type `cd ./ticket_migrator/migrator_app/static/migrator_app`, then type  `npm i`. This will install any package dependencies. 
 
-3. :construction: Ask Steve how to install python,
+3. Next type `cd ..` to get back to the folder that contains the file `manage.py`
 
-4. :construction: Run the application
+4. Next we get into our proper environment by typing `pipenv shell`.
 
-Bazinga. You're in.
+5. Finally we run the application using `python manage.py runserver` and navigate in `127.0.0.1.8000` in a web browser.
+
+:fire: Bazinga. You're in.
 
 ---
 ## Technology Used to create this application
