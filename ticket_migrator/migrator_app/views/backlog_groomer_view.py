@@ -3,7 +3,9 @@ from django.http import HttpResponse
 from django.template import loader
 from migrator_app.models import *
 from django import forms
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def renderRepoSelector(request):
     source_repo_list = source_repo_model.Source_Repo.objects.all()
     backlog_list = backlog_model.Backlog.objects.all()

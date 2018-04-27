@@ -13,4 +13,6 @@ urlpatterns = [
     path('delete_repo/<int:source_repo_id>', delete_repo_view.delete_repo, name='delete_repo'),
     path('delete_backlog/<int:backlog_id>', delete_backlog_view.delete_backlog, name='delete_backlog'),
     path('createbacklog/', backlog_creator_view.create_backlog_and_tickets, name='create_backlog'),
+    path('register/', register_view.register, name='register'),
+    path('profile/', profile_view.profile, name='profile'),
 ]
