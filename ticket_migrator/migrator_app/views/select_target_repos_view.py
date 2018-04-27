@@ -2,13 +2,14 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 from migrator_app.models import *
+from django.contrib.auth.decorators import login_required
 
 from operator import itemgetter
 import requests
 import base64
 import json
 
-
+@login_required
 def select_target_repos(request, backlog_id):
     selected_backlog = get_object_or_404(backlog_model.Backlog, pk=backlog_id)
     github = selected_backlog.source_repo.url.split('https://github.com/')[1]
