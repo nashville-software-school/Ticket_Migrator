@@ -6,7 +6,7 @@
 <p>Please login to see this page.</p>
 {% endif %} {% endif %}
 
-<form method="post">
+<form method="post" action="{% url 'login' %}">
     {% csrf_token %}
 
     <div>
@@ -19,8 +19,8 @@
     </div>
 
     <div>
-        <button class="button" formaction="{% url 'login' %}">Login</button>
-        <button class="button" formaction="../../register/">Register</button>
+        <input class="button" type="submit" value="Login">
+        <a class="button" href="../../register">Register</a>
         <input type="hidden" name="next" value="{{ next }}" />
     </div>
 </form>

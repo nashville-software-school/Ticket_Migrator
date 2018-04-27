@@ -18,17 +18,14 @@ const addInput = () => {
 
 // Run on form submission to validate auth token and scrape values from input fields
 const set_form_values = () => {
-  //Check for presence of auth token and fail form submission if not present
-  if (!get_auth_token()) {
-    $("#ErrorHandler").toggleClass("is-active");
-    $("#ErrorMessage").html("Please make sure you have saved a token to local storage");
+  //Check for some number of target repos and fail form submission if not present
+  if (!get_target_repo_value()) {
+    alert("Please make sure you have entered in target repos");
     return false;
   }
 
-  //Check for some number of target repos and fail form submission if not present
-  if (!get_target_repo_value()) {
-    $("#ErrorHandler").toggleClass("is-active");
-    $("#ErrorMessage").html("Please make sure you have entered in target repos");
+  if (!get_passphrase()) {
+    alert("Please make sure you enter a secrete token passphrase");
     return false;
   }
 
@@ -58,12 +55,13 @@ const get_target_repo_value = () => {
 
 // Set the value of the "Authorization" key from local storage to a form value so it can
 // be submitted to the server - return a bool value that reflects if the token was present
-const get_auth_token = () => {
-  return ($("#credentials")[0].value = JSON.parse(
-    localStorage.getItem("Authorization")
-  )) != null
-    ? true
-    : false;
+const get_passphrase = () => {
+  return ![null, ""].includes(
+    ($("#credentials")[0].value = prompt(
+      "Enter Token Passphrase",
+      "Super Secret Passphrase"
+    ))
+  );
 };
 
 // Trigger the addInput function on button click

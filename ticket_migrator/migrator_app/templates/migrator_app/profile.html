@@ -4,7 +4,7 @@
 
 <h1>{{user.username}}</h1>
 <h2>Token</h2>
-{% if user.profile.token != "" %}
+{% if user.profile.token %}
 <form action="./" method="POST">
     {% csrf_token %}
     <input type="hidden" name="token" class="input" value="">

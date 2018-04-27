@@ -6,7 +6,7 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    token = models.TextField(max_length=500, default="")
+    token = models.CharField(max_length=500, null=True)
 
 
 @receiver(post_save, sender=User)
