@@ -1,16 +1,17 @@
-{% extends "../layout.html" %}
-
-{% block content %}
+{% extends "../layout.html" %} {% block content %}
 
 <div class="has-text-centered">
-    <h1 class="is-size-1 has-text-link">SUCCESS</h1>   
-    <h3 class="is-size-3">You have migrated <span class="has-text-primary">{{backlog.name}}</span></h3>
-    <h2 class="is-size-3">from <span class="has-text-success">{{backlog.source_repo}}</span></h3></h2>
+    <h1 class="is-size-1 has-text-link">SUCCESS</h1>
+    <h3 class="is-size-3">You have migrated
+        <span class="has-text-primary">{{backlog.name}}</span>
+    </h3>
+    <h2 class="is-size-3">from
+        <span class="has-text-success">{{backlog.source_repo}}</span>
+        </h3>
+    </h2>
     <br>
     <h3 class="is-size-3">to</h3>
     {% for repos in target_repos %}
-        <h3 class="is-size-3 has-text-danger">{{repos}}</h3>
-    {% endfor %}
-    
-    {% endblock %}
+    <h3 class="is-size-3 has-text-danger">{{repos}}</h3>
+    {% endfor %} {% endblock %}
 </div>

@@ -1,4 +1,7 @@
  {% extends "../layout.html" %} {% load static %} {% block content %}
+
+<link href="{% static '/migrator_app/modal.css' %}" rel='stylesheet' type='text/css' />
+
 <div class="column has-background-dark" style="border-radius:5px;margin-top:20px;">
     <h1 class="has-text-white">{{ backlog.name }}</h1>
     <br>

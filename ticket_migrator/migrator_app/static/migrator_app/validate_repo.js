@@ -2,26 +2,24 @@
 
 const check_github_for_source_repo = form => {
   const success = data => {
-    form.submit();
+    if ("id" in data) {
+      form.submit();
+    } else {
+      fail();
+    }
   };
 
-  const fail = data => {
-    alert("Source Repo Not Valid");
+  const fail = (data = null) => {
+    alert("Failed to validate source repo");
   };
 
   const url =
-    "https://api.github.com/repos/" +
+    "https://spyproxy.bangazon.com/student/commit/https://api.github.com/repos/" +
     form.source_repo.value.split("https://github.com/")[1];
-  let authToken;
-  let headers;
-  if ((authToken = JSON.parse(localStorage.getItem("Authorization")))) {
-    headers = { Authorization: "token " + authToken };
-  }
 
   $.ajax({
     type: "GET",
-    url: url,
-    headers: headers
+    url: url
   }).then(success, fail);
 
   return false;
