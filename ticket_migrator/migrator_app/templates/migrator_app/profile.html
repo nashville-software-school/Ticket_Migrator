@@ -7,7 +7,7 @@
 {% if user.profile.token %}
 <form action="./" method="POST">
     {% csrf_token %}
-    <input type="hidden" name="token" class="input" value="">
+    <input type="hidden" name="delete_token" class="input" value="">
     <input type="submit" class="input" value="DELETE">
 </form>
 {% else %}
