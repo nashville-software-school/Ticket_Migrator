@@ -1,16 +1,16 @@
-//This function supposedly handles adding a token to local storage from the
-// input box in layout.html. Checks for any matches and nulls
+// Saves the value of the token_input_field to local storage
+// hides the input field and shows the "authorized" div
+// returns false to stop the form from being submitted
 const addToken = () => {
-  // set the value of the fireld and the value of the localstorage, if any, into variables.
   const tokenInputValue = document.getElementById("token_input_field").value;
-  //throw it in
   localStorage.setItem("Authorization", JSON.stringify(tokenInputValue));
-
   swap_displayed_div();
-
   return false;
 };
 
+// Removes the token from local storage
+// hides the "authorized" div and shows the input field
+// returns false to stop the form from being submitted
 const removeToken = () => {
   localStorage.removeItem("Authorization");
   swap_displayed_div();
@@ -18,32 +18,16 @@ const removeToken = () => {
 };
 
 const swap_displayed_div = () => {
-  $(".header--auth").toggleClass("hidden"); 
+  $(".header--auth").toggleClass("hidden");
 };
 
+// Checks for the presence of a token and returns a bool value
 const verify_token = () => {
-  return JSON.parse(localStorage.getItem("Authorization")) != null
-    ? true
-    : false;
+  return localStorage.getItem("Authorization") != null ? true : false;
 };
 
-$(document).ready(() => {
-  if (verify_token()) {
-    $("#auth_true_show").toggleClass("hidden");
-  } else {
-    $("#auth_false_show").toggleClass("hidden");
-  }
-});
-
-// Warning box functionality i dunno
-// const removeWarningBox = () => {
-//   $("#ErrorHandler").click(e => {
-//   $(".delete").removeClass('hidden')
-// })}
-
-// else if (tokenInputValue === tokenAlreadyStored) {
-//     hideShowFunction.showAuthorized();
-//     // c-log for developer info
-//      console.log('Welcome Returning user: ', tokenAlreadyStored);
-//     //check to see if the input box is null, throw an error.
-// }
+// On page load - interpolate the bool value returned from verify token function
+// to show the appropriate auth div
+$(document).ready(() =>
+  $(`#auth_${verify_token()}_show`).toggleClass("hidden")
+);
