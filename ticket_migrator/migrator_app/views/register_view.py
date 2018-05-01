@@ -14,10 +14,6 @@ def register(request):
         username = request.POST['email']
 
         raw_password1 = request.POST['password1']
-        raw_password2 = request.POST['password2']
-
-        if(raw_password1 != raw_password2):
-            throw(error)
 
         user = User.objects.create_user(username, '', raw_password1)
         user = authenticate(username=username, password=raw_password1)

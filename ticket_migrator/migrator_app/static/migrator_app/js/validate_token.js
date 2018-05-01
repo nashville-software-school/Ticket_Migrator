@@ -47,3 +47,17 @@ const validate_token = form => {
 
   return false;
 };
+
+const validate_token_on_register = form => {
+  const password1 = form.password1.value;
+  const password2 = form.password2.value;
+
+  if (password1 != password2) {
+    alert("Passwords Do Not Match");
+    return false;
+  }
+
+  validate_token(form);
+
+  return false;
+};

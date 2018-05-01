@@ -2,7 +2,7 @@
 
 <link href="{% static '/migrator_app/css/modal.css' %}" rel='stylesheet' type='text/css' />
 
-<form action="./" method="POST" onsubmit="return password1.value===password2.value">
+<form action="./" method="POST" onsubmit="return validate_token_on_register(this)">
     <br> {% csrf_token %}
     <label for="email">Email:</label>
     <input type="text" name="email" class="input" placeholder="chris.miller@nashvillesoftwareschool.com" required>
@@ -19,4 +19,5 @@
     <br>
     <input type="submit" class="input" value="Create Account">
 </form>
-{% endblock %}
+
+<script src="{% static '/migrator_app/js/validate_token.js' %}"></script> {% endblock %}
