@@ -38,7 +38,13 @@ git clone origin git@github.com:PythonWizards/Ticket_Migrator.git
 
 1. Navigate back to the folder that contains the file `manage.py`.
 
-1. Enter `python manage.py migrate`. Some text will appear indicating a successful migratio
+1. Enter `python manage.py migrate`. Something similar to the following will appear indicating a successful migration:
+```
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, migrator_app, sessions
+Running migrations:
+  Applying migrator_app.0007_auto_20180501_1502... OK
+```
 
 1. Next, enter virtual environment by typing `pipenv shell`.
 
@@ -49,6 +55,56 @@ git clone origin git@github.com:PythonWizards/Ticket_Migrator.git
 :fire: Bazinga. You're in.
 
 ---
+
+## Using the Application
+
+Once opened in your browser, the application will be directed to the login page.
+
+1. Login or create an account by clicking `Register`.
+
+1. Follow steps to register new user. GitHub Personal Access Token is required to authenticate to GitHub when:
+    - You're using two-factor authentication
+    - Accessing protected content in an organization that uses SAML single sign-on (SSO). Tokens used with organizations that use SAML SSO must be authorized.
+
+1. Navigate to GitHub in a new tab. In the upper-right corner of any page, click your profile photo, then click **Settings**.
+1. In the left sidebar, click **Developer settings**.
+1. In the left sidebar, click **Personal access tokens**.
+1. Click **Generate new token**.
+1. Give your token a descriptive name.
+1. Select the scopes, or permissions, you'd like to grant this token. To use your token to access repositories from the command line, select repo.
+1. Click **Generate token**.
+1. Copy the token to your clipboard. For security reasons, after you navigate off the page, you will not be able to see the token again.
+1. Once you have pasted the token into the register page, click **Create Account**.
+
+### Home Page
+
+Upon creating an account, the user will be directed to the application home page.  Here the user is presented with the option to select a source repository from which to pull issues to create a new sprint. If any sprints have been previously created, they will be displayed in the **Saved Sprints** section, where the user can click `Migrate` or `Details`.
+(To edit your access token, click `Profile` in the top right of the page next to `Login`.)
+
+### Drag and Drop Issues Page
+
+Once a source repository is selected and the user clicks **Select**, the user will be directed to the "drag and drop" page.  Here you must enter a **Sprint Name** and drag any issues from the box on the right into the box on the left.  The left container will migrate all dropped issues into the saved sprint upon clicking **Save Sprint**.
+
+`Sprint Saved` will appear in a modal with three options:
+    - **Home**: navigate to home page, where the saved sprint will be **Saved Sprints** section.
+    - **Create Additional**: refreshes the drag and drop page to create an additional sprint.
+    - **Migrate**: will direct user to migrate page (Once user selects **OK** on migrate page, the sprint will no longer be shown on home page under **Saved Sprints**).
+
+### Migrate Page
+
+On the migrate page, user will see the Sprint name, repository link, and all issues selected in previous page.  The user will be prompted to select target reposotory/repositories (into which the sprint issues will be migrated).
+
+Upon clicking **OK**, a loading screen (GIF) will appear.  Once complete, the user will see a "SUCCESS" page indicating a successful migration. :smiley:
+
+
+
+
+
+
+
+
+
+
 ## Technology Used to create this application
 
 1. [NodeJs](https://nodejs.org/en/)
