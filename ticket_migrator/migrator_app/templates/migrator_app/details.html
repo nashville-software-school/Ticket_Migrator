@@ -3,50 +3,42 @@
 <link href="{% static '/migrator_app/css/modal.css' %}" rel='stylesheet' type='text/css' />
 
 <br>
-<div class="tile is-ancestor">
-  <div class="tile is-vertical">
-    <div class="tile">
-      <div class="tile is-parent is-vertical">
-        <article class="tile is-child notification is-dark">
-          <p class="title has-text-centered">Sprint Details</p>
-          <hr>
-          <p class="subtitle">Title: {{ sprint.name }}</p>
-          <p class="subtitle">Source:
-            <a target="_blank" class="sr-{{sprint.id}}" href="{{ sprint.source_repo.url }}">{{ sprint.source_repo.url }}</a>
-          </p>
-          <hr>
-          <p>Actions:</p>
-          <a href="../migrate/{{sprint.id}}">Migrate</a>
-          <span> | </span>
-          <a id="{{sprint.id}}" class="_delete">Delete</a>
-        </article>
-      </div>
-      <div class="tile is-parent">
-        <article class="tile is-child notification is-info">
-          <p class="title has-text-centered">Issues (groomed)</p>
-          <hr> {% for issue in issues %}
-          <p class="subtitle">#{{issue.number}} : {{issue.title}}</p>
-          {% endfor %}
-        </article>
-      </div>
-    </div>
-  </div>
+<div>
+  <article>
+    <h1>Sprint Details</h1>
+    <p>Title: {{ sprint.name }}</p>
+    <p>Source:
+      <a target="_blank" class="sr-{{sprint.id}}" href="{{ sprint.source_repo.url }}">{{ sprint.source_repo.url }}</a>
+    </p>
+    <h2>Issues (groomed)</h2>
+    <hr> {% for issue in issues %}
+    <p>#{{issue.number}} : {{issue.title}}</p>
+    {% endfor %}
+    <hr>
+    <p>Actions:</p>
+    <a href="../migrate/{{sprint.id}}">Migrate</a>
+    <span> | </span>
+    <a href="#" id="{{sprint.id}}" class="_delete">Delete</a>
+  </article>
 </div>
 
 <div class="modal">
-  <div class="modal-background"></div>
   <div class="modal-content">
-    <div class="box has-background-dark has-text-white has-text-centered">
-      <h2 class="is-size-1-desktop">Confirm Delete</h2>
-      <h2 class="is-size-5-desktop">
+    <div>
+      <h2>Confirm Delete</h2>
+      <h2>
         <span id="sprint_url"></span>
       </h2>
       <br>
-      <a href="../delete_sprint/" id="confirm" class="button modal-button">Confirm</a>
-      <button id="cancel" class="button modal-button hide_modal_button">Cancel</button>
+      <a href="../delete_sprint/" id="confirm" class="button modal-button">
+        <button>
+          Confirm
+        </button>
+      </a>
+      <button id="cancel" class="hide_modal_button">Cancel</button>
     </div>
   </div>
-  <button class="modal-close is-large has-background-dark hide_modal_button" aria-label="close"></button>
+  <button class="close hide_modal_button" aria-label="close">X</button>
 </div>
 
 <script src="{% static '/migrator_app/js/delete_modal.js' %}"></script> {% endblock %}

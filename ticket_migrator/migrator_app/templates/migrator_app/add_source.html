@@ -9,20 +9,19 @@
         <h1>Add New Source Repository :</h1>
         <form action="../addsource/" method="post" onsubmit="return check_github_for_source_repo(this)">
             {% csrf_token %}
-            <div class="field is-horizontal">
-
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control">
+            <div>
+                <div>
+                    <div>
+                        <p>
                             <input id="source_repo" class="input" type="text" name="source_repo" pattern='^https:\/\/github.com\/\S*\/\S*(?<!/)' title="Use full url with no whitespace - IE : https://github.com/PythonWizards/MigratorTesting"
                                 placeholder="https://github.com/PythonWizards/MigratorTesting" required>
                         </p>
                     </div>
                 </div>
 
-                <div class="field-label is-small">
+                <div>
                     <label class="label">
-                        <input class="button is-white is-medium" type="submit" value="Save" style="margin-bottom:-8px;margin-top:-10px;">
+                        <inputtype="submit" value="Save">
                     </label>
                 </div>
 
@@ -38,9 +37,9 @@
         <ul>
             {% for source_repo in source_repos %}
             <li class="source_repo_list">
-                <span class="is-size-4 sr-{{source_repo.id}}">{{ source_repo.url }}</span>
+                <span class="sr-{{source_repo.id}}">{{ source_repo.url }}</span>
                 <span> | </span>
-                <span class="is-pulled-right">
+                <span>
                     <a id="{{source_repo.id}}" class="delete _delete" href="#">Delete</a>
                 </span>
             </li>
