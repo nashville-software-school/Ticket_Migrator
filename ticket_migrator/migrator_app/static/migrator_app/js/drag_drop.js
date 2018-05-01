@@ -6,7 +6,7 @@ let dragula_obj = dragula([
   document.getElementById("dragBoxRight")
 ]);
 
-let saved_backlog = null;
+let saved_sprint = null;
 let results_container = $(dragula_obj.containers[0])[0].children;
 
 // Go home
@@ -14,15 +14,15 @@ $("#home_button").click(e => {
   window.location.href = "../";
 });
 
-// Go to the migrate page of the just saved backlog
+// Go to the migrate page of the just saved sprint
 $("#migrate_button").click(e => {
-  window.location.href = `../migrate/${saved_backlog}`;
+  window.location.href = `../migrate/${saved_sprint}`;
 });
 
-// Resets the page so you can create an additional backlog
+// Resets the page so you can create an additional sprint
 $("#create_button").click(e => {
   $(".modal").removeClass("is-active");
-  $("#backlog_name")[0].value = "";
+  $("#sprint_name")[0].value = "";
   // query all issue divs
   let r = $(".issue").remove();
   // move all of them issue divs to the right column
@@ -43,13 +43,17 @@ const on_submit = () => {
       return { id: parseInt(x.id), priority: i };
     })
   );
-  let backlog_name = $("#backlog_name").val();
+  let sprint_name = $("#sprint_name").val();
   let source_repo_id = $("#source_repo").val();
 
+  if (issue_array === "[]") {
+    alert("Please select at least one issue to add to the sprint");
+    return false;
+  }
   // Compile all information into an object to submit to the server
   let data = {
     source_repo_id: source_repo_id,
-    backlog_name: backlog_name,
+    sprint_name: sprint_name,
     issue_array: issue_array
   };
 
@@ -75,10 +79,10 @@ const on_submit = () => {
   // Submit the info to the server with AJAX so that the page does not refresh
   $.ajax({
     method: "POST",
-    url: "../createbacklog/",
+    url: "../createsprint/",
     data: data
   }).done(response => {
-    saved_backlog = response.backlog_id;
+    saved_sprint = response.sprint_id;
     // After the server responds, open the modal
     $(".modal").toggleClass("is-active");
   });
