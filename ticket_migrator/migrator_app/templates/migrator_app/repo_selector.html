@@ -6,21 +6,20 @@
 <br>
 <div>
     <article>
-        <p>Create a New Sprint :</p>
+        <h1>Create a New Sprint :</h1>
         <p>Select a source repository to pull issues from</p>
-        <hr>
         <select id="repo_selector">
             {% for choice in choices %}
             <option value={{choice.0}}>{{choice.1}}</option>
             {% endfor %}
         </select>
         <button onclick="window.location.href=repo_selector.value">Select</button>
+        <hr>
     </article>
 </div>
 <div>
     <article>
-        <p>Saved Sprints</p>
-        <hr>
+        <h2>Saved Sprints</h2>
         <ul>
             {% for sprint in sprints %}
             <li class="sprint_list">

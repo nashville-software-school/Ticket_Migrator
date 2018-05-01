@@ -4,10 +4,9 @@
 <link href="{% static '/migrator_app/css/add_source.css' %}" rel='stylesheet' type='text/css' />
 
 <br>
-<div class="tile is-parent is-vertical">
-    <article class="tile is-child notification is-dark">
-        <p class="title has-text-centered">Add New Source Repository :</p>
-        <hr>
+<div>
+    <article>
+        <h1>Add New Source Repository :</h1>
         <form action="../addsource/" method="post" onsubmit="return check_github_for_source_repo(this)">
             {% csrf_token %}
             <div class="field is-horizontal">
@@ -31,11 +30,11 @@
         </form>
     </article>
 </div>
+<hr>
 
-<div class="tile is-parent">
-    <article class="tile is-child notification is-info">
-        <p class="title centered has-text-centered">Saved Source Repositories :</p>
-        <hr>
+<div>
+    <article>
+        <h1>Saved Source Repositories :</h1>
         <ul>
             {% for source_repo in source_repos %}
             <li class="source_repo_list">

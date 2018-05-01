@@ -3,13 +3,12 @@
 <link href="{% static '/migrator_app/css/modal.css' %}" rel='stylesheet' type='text/css' />
 
 <div>
-    <h1>{{ sprint.name }}</h1>
-    <br>
-    <h1>{{ sprint.source_repo.url }}</h1>
+    <h1>Sprint Name : {{ sprint.name }}</h1>
+    <h2>Sprint Source Repository : {{ sprint.source_repo.url }}</h2>
 </div>
-<br>
-
+<hr>
 <div class="column">
+    <h2>Groomed Issues</h2>
     {% for issue in issues %}
     <div id="{{ issue.github_id }}">
         <div>
@@ -22,7 +21,6 @@
 
 <!-- Form to submit details to the server -->
 <hr>
-<br>
 <form id="submit" action="../success/{{sprint.id}}" method="post" onsubmit="return set_form_values(this)">
     {% csrf_token %}
 
