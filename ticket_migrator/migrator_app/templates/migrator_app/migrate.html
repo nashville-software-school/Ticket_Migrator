@@ -2,17 +2,17 @@
 
 <link href="{% static '/migrator_app/css/modal.css' %}" rel='stylesheet' type='text/css' />
 
-<div class="column has-background-dark" style="border-radius:5px;margin-top:20px;">
-    <h1 class="has-text-white">{{ sprint.name }}</h1>
+<div>
+    <h1>{{ sprint.name }}</h1>
     <br>
-    <h1 class="has-text-white">{{ sprint.source_repo.url }}</h1>
+    <h1>{{ sprint.source_repo.url }}</h1>
 </div>
 <br>
 
 <div class="column">
     {% for issue in issues %}
-    <div id="{{ issue.github_id }}" class='card issue notification is-info'>
-        <div class="card-content">
+    <div id="{{ issue.github_id }}">
+        <div>
             <div>{{issue.number}} : {{issue.title}}</div>
         </div>
     </div>
@@ -23,7 +23,7 @@
 <!-- Form to submit details to the server -->
 <hr>
 <br>
-<form class="tile is-child is-dark" id="submit" action="../success/{{sprint.id}}" method="post" onsubmit="return set_form_values(this)">
+<form id="submit" action="../success/{{sprint.id}}" method="post" onsubmit="return set_form_values(this)">
     {% csrf_token %}
 
     <h2>Enter Target Repository URLs
@@ -45,9 +45,9 @@
 <hr>
 
 <div id="gifModal" class="modal level">
-    <div class="modal-background is-vcentered level"></div>
+    <div class="modal-background level"></div>
     <div class="modal-content">
-        <h2 class="is-size-2 has-text-white" style="text-align:center;margin-top:50px;">Loading...</h2>
+        <h2>Loading...</h2>
         <p class="image is-4by3">
             <div class="ajaxLoading" id="loadingGif">
 
@@ -55,7 +55,7 @@
             </div>
         </p>
     </div>
-    <button class="modal-close is-large" aria-label="close">Close</button>
+    <button class="modal-close" aria-label="close">Close</button>
 </div>
 
 <script type="text/javascript" src="{% static 'migrator_app/js/migrate.js' %}"></script> {% endblock %}
