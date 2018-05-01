@@ -3,15 +3,20 @@
 <link href="{% static '/migrator_app/css/modal.css' %}" rel='stylesheet' type='text/css' />
 
 <form action="./" method="POST" onsubmit="return password1.value===password2.value">
-    {% csrf_token %}
+    <br> {% csrf_token %}
     <label for="email">Email:</label>
     <input type="text" name="email" class="input" placeholder="chris.miller@nashvillesoftwareschool.com" required>
+    <br>
     <label for="password1">Password:</label>
     <input type="password" name="password1" class="input" required>
+    <br>
     <label for="password2">Confirm Password:</label>
     <input type="password" name="password2" class="input" required>
+    <br>
     <label for="token">Github PAT:</label>
     <input type="text" name="token" class="input" pattern="^[a-zA-Z0-9]{40}$">
+    <br>
+    <br>
     <input type="submit" class="input" value="Create Account">
 </form>
 {% endblock %}
