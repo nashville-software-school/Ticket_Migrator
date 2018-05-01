@@ -23,7 +23,7 @@
 <!-- Form to submit details to the server -->
 <hr>
 <br>
-<form class="tile is-child is-dark" id="submit" action="../success/{{backlog.id}}" method="post" onsubmit="return set_form_values()">
+<form class="tile is-child is-dark" id="submit" action="../success/{{backlog.id}}" method="post" onsubmit="return set_form_values(this)">
     {% csrf_token %}
 
     <h2>Enter Target Repository URLs

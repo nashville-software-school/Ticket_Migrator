@@ -17,7 +17,7 @@ const addInput = () => {
 };
 
 // Run on form submission to validate auth token and scrape values from input fields
-const set_form_values = () => {
+const set_form_values = form => {
   //Check for some number of target repos and fail form submission if not present
   if (!get_target_repo_value()) {
     alert("Please make sure you have entered in target repos");
@@ -29,14 +29,36 @@ const set_form_values = () => {
     return false;
   }
 
-  show_loading_gif_modal();
+  validate(form);
 
-  // Return true to trigger form submission
-  return true;
+  return false;
 };
 
 const show_loading_gif_modal = () => {
   $("#gifModal").toggleClass("is-active");
+};
+
+const validate = form => {
+  return Promise.all(
+    Object.assign([], $(".target_repos_inputs"))
+      .map(x => x.value.split("https://github.com/")[1])
+      .map(
+        x =>
+          "https://spyproxy.bangazon.com/student/commit/https://api.github.com/repos/" +
+          x
+      )
+      .map(x => $.ajax((url = x)))
+  ).then(
+    (success = res => {
+      show_loading_gif_modal();
+      form.submit();
+      return true;
+    }),
+    (fail = res => {
+      alert("Not all target repos are valid");
+      return false;
+    })
+  );
 };
 
 // Query all of the target repo input fields convert the html collection into an array

@@ -46,6 +46,10 @@ const on_submit = () => {
   let backlog_name = $("#backlog_name").val();
   let source_repo_id = $("#source_repo").val();
 
+  if (issue_array === "[]") {
+    alert("Please select at least one issue to add to the sprint");
+    return false;
+  }
   // Compile all information into an object to submit to the server
   let data = {
     source_repo_id: source_repo_id,
