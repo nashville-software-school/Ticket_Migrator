@@ -8,16 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NSS - Issue Migrator</title>
   <link rel="stylesheet" href="{% static '/migrator_app/node_modules/bulma/css/bulma.min.css'%}">
-  <link rel="stylesheet" href="{% static '/migrator_app/main.css'%}">
+  <link rel="stylesheet" href="{% static '/migrator_app/css/main.css'%}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-  <script src="{% static '/migrator_app/main.js' %}"></script>
 </head>
 
 <body>
   <section class="hero is-dark is-bold">
     <div class="hero-body">
       <div class="container">
+        {% if user.is_authenticated %}
+        <h4>{{user.username}}</h4>
+        {% endif %}
         <h1 class="title">
           Instructor Issue Migrator
         </h1>
@@ -25,10 +27,16 @@
           A github
           <sup style="font-size: 10px">&copy;</sup> automator
         </h2>
-
-        <a href="/">
-          <img id="bar-img" src="{% static '/migrator_app/nss.svg'%}" alt="">
-        </a>
+        <div id="bar-img">
+          <a href="/">
+            <img src="{% static '/migrator_app/assets/nss.svg'%}" alt="">
+          </a>
+          {% if user.is_authenticated %}
+          <a href="/accounts/logout/">Logout</a>
+          <span> | </span>
+          <a href="/profile/">Profile</a>
+          {% endif %}
+        </div>
       </div>
     </div>
   </section>

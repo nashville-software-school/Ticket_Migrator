@@ -1,22 +1,23 @@
 {% extends "../layout.html" %} {% load static %} {% block content %}
 
-<link href="{% static '/migrator_app/drag.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static '/migrator_app/css/modal.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static '/migrator_app/css/drag.css' %}" rel='stylesheet' type='text/css' />
 <link href="{% static '/migrator_app/node_modules/dragula/dist/dragula.min.css' %}" rel='stylesheet' type='text/css' />
 
-<h1 class="is-size-2">Drag and drop issues to groom backlog</h1>
+<h1 class="is-size-2">Drag and drop issues to groom sprint</h1>
 <br>
 <h3>Source Repository :</h3>
 <div class="card has-background-dark has-text-white is-size-4">
     <div class="card-content ">{{source_repo.url}}</div>
 </div>
 <br>
-<!-- Creates groomed backlog for saving to database -->
+<!-- Creates groomed sprint for saving to database -->
 <form action="javascript:void(0);" onsubmit="on_submit()">
     {% if issues %}
     <!-- List of things in 'context' object in drag_view.html  -->
     {% csrf_token %}
     <h3> Sprint Name :</h3>
-    <input class="input" type="text" id="backlog_name" name="backlog_name" placeholder="Bangazon Web API" required>
+    <input class="input" type="text" id="sprint_name" name="sprint_name" placeholder="Bangazon Web API" required>
 
     <div class="drag_and_drop_container container has">
         <div id="dragBoxLeft" class="box dragula_box has-background-dark"></div>
@@ -56,4 +57,4 @@
 </div>
 
 <script type="text/javascript" src="{% static '/migrator_app/node_modules/dragula/dist/dragula.min.js' %}"></script>
-<script type="text/javascript" src="{% static '/migrator_app/drag_drop.js' %}"></script> {% endblock %}
+<script type="text/javascript" src="{% static '/migrator_app/js/drag_drop.js' %}"></script> {% endblock %}

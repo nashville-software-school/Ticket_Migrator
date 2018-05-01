@@ -1,7 +1,7 @@
 {% extends "../layout.html" %} {% load static %} {% block content %}
 
-<link href="{% static '/migrator_app/modal.css' %}" rel='stylesheet' type='text/css' />
-<link href="{% static '/migrator_app/add_source.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static '/migrator_app/css/modal.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static '/migrator_app/css/add_source.css' %}" rel='stylesheet' type='text/css' />
 
 <br>
 <div class="tile is-parent is-vertical">
@@ -55,7 +55,7 @@
         <div class="box has-background-dark has-text-white has-text-centered">
             <h2 class="is-size-1-desktop">Confirm Delete</h2>
             <h2 class="is-size-5-desktop">
-                <span id="backlog_url"></span>
+                <span id="sprint_url"></span>
             </h2>
             <br>
             <a href="../delete_repo/" id="confirm" class="button modal-button">Confirm</a>
@@ -65,5 +65,5 @@
     <button class="modal-close is-large has-background-dark hide_modal_button" aria-label="close"></button>
 </div>
 
-<script src="{% static '/migrator_app/add_source.js' %}"></script>
-<script src="{% static '/migrator_app/delete_modal.js' %}"></script> {% endblock %}
+<script src="{% static '/migrator_app/js/validate_repo.js' %}"></script>
+<script src="{% static '/migrator_app/js/delete_modal.js' %}"></script> {% endblock %}

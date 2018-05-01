@@ -2,7 +2,7 @@ from django.db import models
 from .source_repo_model import Source_Repo
 
 
-class Backlog(models.Model):
+class Sprint(models.Model):
     name = models.CharField(max_length=200, unique=True)
     source_repo = models.ForeignKey(Source_Repo, on_delete=models.CASCADE)
 
