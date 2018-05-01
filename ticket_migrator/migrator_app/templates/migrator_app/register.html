@@ -1,6 +1,6 @@
 {% extends "../layout.html" %} {% load static %} {% block content %}
 
-<link href="{% static '/migrator_app/modal.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static '/migrator_app/css/modal.css' %}" rel='stylesheet' type='text/css' />
 
 <form action="./" method="POST" onsubmit="return password1.value===password2.value">
     {% csrf_token %}

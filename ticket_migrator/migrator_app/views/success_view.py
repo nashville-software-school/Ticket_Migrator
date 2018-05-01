@@ -14,7 +14,7 @@ import json
 @login_required
 def success(request, backlog_id):
 
-    password = request.POST.get("credentials", "")
+    password = request.POST.get("password", "")
 
     user = authenticate(username=request.user.username,
                         password=password)

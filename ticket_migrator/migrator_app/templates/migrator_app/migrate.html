@@ -1,6 +1,6 @@
  {% extends "../layout.html" %} {% load static %} {% block content %}
 
-<link href="{% static '/migrator_app/modal.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static '/migrator_app/css/modal.css' %}" rel='stylesheet' type='text/css' />
 
 <div class="column has-background-dark" style="border-radius:5px;margin-top:20px;">
     <h1 class="has-text-white">{{ backlog.name }}</h1>
@@ -37,7 +37,7 @@
     <br>
 
     <input type="hidden" id="backlog" name="backlog" value="{{backlog}}">
-    <input type="hidden" id="credentials" name="credentials" value="">
+    <input type="hidden" id="password" name="password" value="">
     <input type="hidden" id="target_repos" name="target_repos" value="">
 
     <input id="okButton" class="button" form='submit' type="submit" value="OK">
@@ -58,4 +58,4 @@
     <button class="modal-close is-large" aria-label="close">Close</button>
 </div>
 
-<script type="text/javascript" src="{% static 'migrator_app/migrate.js' %}"></script> {% endblock %}
+<script type="text/javascript" src="{% static 'migrator_app/js/migrate.js' %}"></script> {% endblock %}

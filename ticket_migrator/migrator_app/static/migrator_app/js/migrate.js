@@ -1,3 +1,6 @@
+//Validation object to hold the array of target repos and use an array of promises to check
+//that they exsist in github
+
 let Validate = () =>
   Object.create(null, {
     array: { value: [], writable: true, enumerable: true },
@@ -94,7 +97,7 @@ const get_target_repo_value = () => {
 // be submitted to the server - return a bool value that reflects if the token was present
 const get_passphrase = () => {
   return ![null, ""].includes(
-    ($("#credentials")[0].value = prompt(
+    ($("#password")[0].value = prompt(
       "Enter Token Passphrase",
       "Super Secret Passphrase"
     ))
