@@ -17,7 +17,7 @@
     {% csrf_token %}
     <label for="password">Confirm Password:</label>
     <input type="password" name="password" class="input" required>
-    <label for="token">Github PAC Token:</label>
+    <label for="token">Github PAT:</label>
     <input type="text" name="token" class="input" pattern="^[a-zA-Z0-9]{40}$">
     <input type="submit" class="input" value="Save Token">
 </form>
@@ -26,9 +26,9 @@
 <div class="modal">
     <div class="modal-background"></div>
     <div class="modal-content">
-        <div class="box has-background-dark has-text-white has-text-centered">
-            <h2 class="is-size-1-desktop">Confirm Delete</h2>
-            <h2 class="is-size-5-desktop">
+        <div class="box">
+            <h2 class="">Confirm Delete</h2>
+            <h2 class="">
                 <span id="sprint_url"></span>
             </h2>
             <br>
@@ -36,7 +36,7 @@
             <button id="cancel" class="button modal-button hide_modal_button">Cancel</button>
         </div>
     </div>
-    <button class="modal-close is-large has-background-dark hide_modal_button" aria-label="close"></button>
+    <button class="modal-close hide_modal_button" aria-label="close"></button>
 </div>
 
 <script src="{% static '/migrator_app/js/validate_token.js' %}"></script>
