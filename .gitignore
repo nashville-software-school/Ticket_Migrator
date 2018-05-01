@@ -4,7 +4,7 @@ node_modules
 *.sqlite3
 .DS_Store
 .sqlite3-journal
-
+comment/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
