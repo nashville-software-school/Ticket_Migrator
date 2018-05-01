@@ -5,29 +5,29 @@
 
 <!--  -->
 <br>
-<div class="tile is-parent is-vertical">
-    <article class="tile is-child notification is-dark">
-        <p class="title has-text-centered">Create a New Sprint :</p>
-        <p class="has-text-centered">Select a source repository to pull issues from</p>
+<div >
+    <article >
+        <p>Create a New Sprint :</p>
+        <p>Select a source repository to pull issues from</p>
         <hr>
-        <select class="select is-rounded is-medium" id="test">
+        <select class="select" id="test">
             {% for choice in choices %}
             <option value={{choice.0}}>{{choice.1}}</option>
             {% endfor %}
         </select>
-        <button class="button is-white is-medium is-pulled-right" onclick="window.location.href=test.value">Select</button>
+        <button class="button" onclick="window.location.href=test.value">Select</button>
     </article>
 </div>
-<div class="tile is-parent">
-    <article class="tile is-child notification is-info">
-        <p class="title centered has-text-centered">Saved Sprints</p>
+<div>
+    <article>
+        <p class="title centered">Saved Sprints</p>
         <hr>
         <ul>
             {% for sprint in sprints %}
             <li class="sprint_list">
                 <a id="{{sprint.id}}" class="delete _delete" href="#">Delete</a>
-                <span class="is-size-4 sr-{{sprint.id}}">{{ sprint.name }}</span>
-                <span class="is-pulled-right">
+                <span class="sr-{{sprint.id}}">{{ sprint.name }}</span>
+                <span >
                     <a href="./migrate/{{sprint.id}}">Migrate</a>
                     <span> | </span>
                     <a href="./details/{{sprint.id}}">Details</a>
@@ -41,8 +41,8 @@
     <div class="modal-background"></div>
     <div class="modal-content">
         <div class="box has-background-dark has-text-white has-text-centered">
-            <h2 class="is-size-1-desktop">Confirm Delete</h2>
-            <h2 class="is-size-5-desktop">
+            <h2>Confirm Delete</h2>
+            <h2>
                 <span id="sprint_url"></span>
             </h2>
             <br>
@@ -50,7 +50,7 @@
             <button id="cancel" class="button modal-button hide_modal_button">Cancel</button>
         </div>
     </div>
-    <button class="modal-close is-large has-background-dark hide_modal_button" aria-label="close"></button>
+    <button class="modal-close hide_modal_button" aria-label="close"></button>
 </div>
 
 <script src="{% static '/migrator_app/js/delete_modal.js' %}"></script> {% endblock %}
