@@ -13,43 +13,22 @@
   animation: spin 2s linear infinite;
 }
 
+.header {
+  color: white;
+  margin: 0;
+  background-color: black;
+  padding: 30px;
+}
+
+.header a {
+  color: white;
+}
+
 #bar-img {
   float: right;
-  margin-top: -125px;
+  margin-top: -155px;
   margin-bottom: -20px;
   padding: -50px;
   height: 128px;
   width: 128px;
-}
-
-.target_repos_inputs {
-  margin: 5px;
-}
-
-#authenticated_user_image {
-  height: 20px;
-  width: 25px;
-  margin-left: 20px;
-  margin-top: 5px;
-}
-
-.hidden {
-  display: none;
-}
-
-.addTokenButton {
-  margin-left: 20px;
-}
-#token_input_field {
-  width: 300px;
-  height: 35px;
-  border-radius: 2px;
-}
-
-#ErrorHandler {
-  width: 500px;
-  position: fixed;
-  margin-left: 25%;
-  margin-top: -130px;
-  z-index: 2;
 }
