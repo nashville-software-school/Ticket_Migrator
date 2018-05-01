@@ -10,11 +10,11 @@ class issue():
         self.target_id = None
 
 class automator():
-    def __init__(self, selected_backlog, target_repos, authToken):
+    def __init__(self, selected_sprint, target_repos, authToken):
         self.source_issues = None
-        self.sprint_name = selected_backlog.name
-        self.source_repo = selected_backlog.source_repo.get_repo()
-        self.issue_array = sorted(list(selected_backlog.backlog_issues_set.all().values()),key=itemgetter('priority'))
+        self.sprint_name = selected_sprint.name
+        self.source_repo = selected_sprint.source_repo.get_repo()
+        self.issue_array = sorted(list(selected_sprint.sprint_issues_set.all().values()),key=itemgetter('priority'))
         self.target_repos = target_repos
         self.headers = {'Accept': 'application/vnd.github.inertia-preview+json',
                         'Authorization': f'token {authToken}'}
@@ -46,11 +46,11 @@ class robot():
         self.headers = headers
         self.sprint_name = sprint_name
         self.target_project_id = None
-        self.target_backlog_id = None
+        self.target_sprint_id = None
         
 
     def run(self):
-        self.migrate_issues().create_project().create_columns().groom_backlog()
+        self.migrate_issues().create_project().create_columns().groom_sprint()
 
     def migrate_issues(self):
         for source_issue in self.source_issues:
@@ -77,12 +77,12 @@ class robot():
         for column in columns:
             response = requests.post(url, json={'name': column}, headers=self.headers)
             if column=='Backlog':
-                self.target_backlog_id=response.json()['id']
+                self.target_sprint_id=response.json()['id']
             
         return self
 
-    def groom_backlog(self):
-        url = f'https://api.github.com/projects/columns/{self.target_backlog_id}/cards'
+    def groom_sprint(self):
+        url = f'https://api.github.com/projects/columns/{self.target_sprint_id}/cards'
         sorted_issues = sorted(self.source_issues, key=lambda i: i.priority, reverse=True)
 
         for si in sorted_issues:

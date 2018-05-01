@@ -10,15 +10,15 @@
         <article class="tile is-child notification is-dark">
           <p class="title has-text-centered">Sprint Details</p>
           <hr>
-          <p class="subtitle">Title: {{ backlog.name }}</p>
+          <p class="subtitle">Title: {{ sprint.name }}</p>
           <p class="subtitle">Source:
-            <a target="_blank" class="sr-{{backlog.id}}" href="{{ backlog.source_repo.url }}">{{ backlog.source_repo.url }}</a>
+            <a target="_blank" class="sr-{{sprint.id}}" href="{{ sprint.source_repo.url }}">{{ sprint.source_repo.url }}</a>
           </p>
           <hr>
           <p>Actions:</p>
-          <a href="../migrate/{{backlog.id}}">Migrate</a>
+          <a href="../migrate/{{sprint.id}}">Migrate</a>
           <span> | </span>
-          <a id="{{backlog.id}}" class="_delete">Delete</a>
+          <a id="{{sprint.id}}" class="_delete">Delete</a>
         </article>
       </div>
       <div class="tile is-parent">
@@ -39,10 +39,10 @@
     <div class="box has-background-dark has-text-white has-text-centered">
       <h2 class="is-size-1-desktop">Confirm Delete</h2>
       <h2 class="is-size-5-desktop">
-        <span id="backlog_url"></span>
+        <span id="sprint_url"></span>
       </h2>
       <br>
-      <a href="../delete_backlog/" id="confirm" class="button modal-button">Confirm</a>
+      <a href="../delete_sprint/" id="confirm" class="button modal-button">Confirm</a>
       <button id="cancel" class="button modal-button hide_modal_button">Cancel</button>
     </div>
   </div>

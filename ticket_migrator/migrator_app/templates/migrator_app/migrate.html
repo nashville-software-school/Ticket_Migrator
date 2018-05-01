@@ -3,9 +3,9 @@
 <link href="{% static '/migrator_app/css/modal.css' %}" rel='stylesheet' type='text/css' />
 
 <div class="column has-background-dark" style="border-radius:5px;margin-top:20px;">
-    <h1 class="has-text-white">{{ backlog.name }}</h1>
+    <h1 class="has-text-white">{{ sprint.name }}</h1>
     <br>
-    <h1 class="has-text-white">{{ backlog.source_repo.url }}</h1>
+    <h1 class="has-text-white">{{ sprint.source_repo.url }}</h1>
 </div>
 <br>
 
@@ -18,12 +18,12 @@
     </div>
     {% endfor %}
 </div>
-<!-- List the issues attached to the backlog -->
+<!-- List the issues attached to the sprint -->
 
 <!-- Form to submit details to the server -->
 <hr>
 <br>
-<form class="tile is-child is-dark" id="submit" action="../success/{{backlog.id}}" method="post" onsubmit="return set_form_values(this)">
+<form class="tile is-child is-dark" id="submit" action="../success/{{sprint.id}}" method="post" onsubmit="return set_form_values(this)">
     {% csrf_token %}
 
     <h2>Enter Target Repository URLs
@@ -36,7 +36,7 @@
     <div id="target_repos_div"></div>
     <br>
 
-    <input type="hidden" id="backlog" name="backlog" value="{{backlog}}">
+    <input type="hidden" id="sprint" name="sprint" value="{{sprint}}">
     <input type="hidden" id="password" name="password" value="">
     <input type="hidden" id="target_repos" name="target_repos" value="">
 

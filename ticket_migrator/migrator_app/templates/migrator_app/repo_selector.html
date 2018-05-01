@@ -23,14 +23,14 @@
         <p class="title centered has-text-centered">Saved Sprints</p>
         <hr>
         <ul>
-            {% for backlog in backlogs %}
-            <li class="backlog_list">
-                <a id="{{backlog.id}}" class="delete _delete" href="#">Delete</a>
-                <span class="is-size-4 sr-{{backlog.id}}">{{ backlog.name }}</span>
+            {% for sprint in sprints %}
+            <li class="sprint_list">
+                <a id="{{sprint.id}}" class="delete _delete" href="#">Delete</a>
+                <span class="is-size-4 sr-{{sprint.id}}">{{ sprint.name }}</span>
                 <span class="is-pulled-right">
-                    <a href="./migrate/{{backlog.id}}">Migrate</a>
+                    <a href="./migrate/{{sprint.id}}">Migrate</a>
                     <span> | </span>
-                    <a href="./details/{{backlog.id}}">Details</a>
+                    <a href="./details/{{sprint.id}}">Details</a>
                 </span>
             </li>
             {% endfor %}
@@ -43,10 +43,10 @@
         <div class="box has-background-dark has-text-white has-text-centered">
             <h2 class="is-size-1-desktop">Confirm Delete</h2>
             <h2 class="is-size-5-desktop">
-                <span id="backlog_url"></span>
+                <span id="sprint_url"></span>
             </h2>
             <br>
-            <a href="./delete_backlog/" id="confirm" class="button modal-button">Confirm</a>
+            <a href="./delete_sprint/" id="confirm" class="button modal-button">Confirm</a>
             <button id="cancel" class="button modal-button hide_modal_button">Cancel</button>
         </div>
     </div>
