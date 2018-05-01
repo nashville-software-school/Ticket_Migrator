@@ -7,25 +7,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NSS - Issue Migrator</title>
-  <link rel="stylesheet" href="{% static '/migrator_app/node_modules/bulma/css/bulma.min.css'%}">
   <link rel="stylesheet" href="{% static '/migrator_app/css/main.css'%}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 </head>
 
 <body>
-  <section class="hero is-dark is-bold">
-    <div class="hero-body">
-      <div class="container">
+  <section class="header">
+    <div class="">
+      <div class="">
         {% if user.is_authenticated %}
         <h4>{{user.username}}</h4>
         {% endif %}
-        <h1 class="title">
+        <h1 class="">
           Instructor Issue Migrator
         </h1>
-        <h2 class="subtitle">
+        <h2 class="">
           A github
-          <sup style="font-size: 10px">&copy;</sup> automator
+          <sup>&copy;</sup> automator
         </h2>
         <div id="bar-img">
           <a href="/">

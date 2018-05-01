@@ -4,11 +4,10 @@
 <link href="{% static '/migrator_app/css/drag.css' %}" rel='stylesheet' type='text/css' />
 <link href="{% static '/migrator_app/node_modules/dragula/dist/dragula.min.css' %}" rel='stylesheet' type='text/css' />
 
-<h1 class="is-size-2">Drag and drop issues to groom sprint</h1>
-<br>
+<h1>Drag and drop issues to groom sprint</h1>
 <h3>Source Repository :</h3>
-<div class="card has-background-dark has-text-white is-size-4">
-    <div class="card-content ">{{source_repo.url}}</div>
+<div>
+    <div>{{source_repo.url}}</div>
 </div>
 <br>
 <!-- Creates groomed sprint for saving to database -->
@@ -19,19 +18,20 @@
     <h3> Sprint Name :</h3>
     <input class="input" type="text" id="sprint_name" name="sprint_name" placeholder="Bangazon Web API" required>
 
-    <div class="drag_and_drop_container container has">
-        <div id="dragBoxLeft" class="box dragula_box has-background-dark"></div>
-        <div id="dragBoxRight" class="box dragula_box has-background-info">
+    <div class="drag_and_drop_container">
+        <div id="dragBoxLeft" class="dragula_box"></div>
+        <div id="dragBoxRight" class="dragula_box">
             {% for issue in issues %}
-            <div id="{{ issue.github_id }}" class='card issue'>
-                <div class="card-content">
+            <div id="{{ issue.github_id }}" class='issue'>
+                <div>
                     {{ issue.issue_number }} : {{ issue.issue_title }}
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
-    <input id="submit_button" class="button is-dark is-large" type="submit" value="Save Sprint">
+    <br>
+    <input id="submit_button" type="submit" value="Save Sprint">
 
     <br>
     <input type="hidden" id="source_repo" name="source_repo" value="{{source_repo.id}}">
@@ -43,17 +43,16 @@
 {% endif %}
 
 <div class="modal">
-    <div class="modal-background"></div>
     <div class="modal-content">
-        <div class="box has-background-dark has-text-white has-text-centered">
-            <h2 class="is-size-1-desktop">Sprint Saved</h2>
+        <div>
+            <h2>Sprint Saved</h2>
             <br>
-            <button id="home_button" class="button modal-button">Home</button>
-            <button id="create_button" class="button modal-button">Create Additional</button>
-            <button id="migrate_button" class="button modal-button">Migrate</button>
+            <button id="home_button">Home</button>
+            <button id="create_button">Create Additional</button>
+            <button id="migrate_button">Migrate</button>
         </div>
     </div>
-    <button id="modal-close" class="modal-close is-large has-background-dark" aria-label="close"></button>
+    <button class="close hide_modal_button" aria-label="close">X</button>
 </div>
 
 <script type="text/javascript" src="{% static '/migrator_app/node_modules/dragula/dist/dragula.min.js' %}"></script>

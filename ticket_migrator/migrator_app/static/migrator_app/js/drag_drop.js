@@ -89,3 +89,8 @@ const on_submit = () => {
 
   return false;
 };
+
+$(".hide_modal_button").click(e => {
+  $(".modal").toggleClass("is-active");
+  $("#confirm").attr("href", "");
+});
