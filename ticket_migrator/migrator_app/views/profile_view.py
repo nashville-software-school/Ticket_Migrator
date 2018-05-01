@@ -3,6 +3,7 @@ from migrator_app.models import *
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from migrator_app.utils.encrypt import aes_encrypt
+from django.contrib.auth import authenticate
 
 
 @login_required
@@ -13,15 +14,17 @@ def profile(request):
     if request.method == 'POST':
         if ('delete_token' in request.POST):
             current_user.profile.token = None
+            current_user.save()
 
         else:
-            passphrase = request.POST['passphrase']
-            token = request.POST['token']
+            raw_password = request.POST['password']
+            user = authenticate(username=request.user.username,
+                                password=raw_password)
 
-            ciphertext = aes_encrypt(passphrase, token)
-
-            current_user.profile.token = ciphertext
-
-        current_user.save()
+            if(user):
+                token = request.POST['token']
+                ciphertext = aes_encrypt(raw_password, token)
+                current_user.profile.token = ciphertext
+                current_user.save()
 
     return render(request, 'migrator_app/profile.html', context)

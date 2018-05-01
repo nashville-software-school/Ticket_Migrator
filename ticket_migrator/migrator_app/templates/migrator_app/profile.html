@@ -1,20 +1,25 @@
 {% extends "../layout.html" %} {% load static %} {% block content %}
 
-<link href="{% static '/migrator_app/modal.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static '/migrator_app/css/modal.css' %}" rel='stylesheet' type='text/css' />
 
 <h1>{{user.username}}</h1>
 <h2>Token</h2>
 {% if user.profile.token %}
 <form action="./" method="POST">
     {% csrf_token %}
-    <input type="hidden" name="token" class="input" value="">
-    <input type="submit" class="input" value="DELETE">
+    <input type="hidden" name="delete_token" class="input" value="">
+    <label for="token">Github PAC Token:</label>
+    <input type="text" name="token" class="input" value="****************************************" disabled>
+    <input type="submit" class="input" value="Delete Token">
 </form>
 {% else %}
-<form action="./" method="POST">
+<form action="./" method="POST" onsubmit="return validate_token(this)">
     {% csrf_token %}
-    <input type="text" name="token" class="input">
-    <input type="submit" class="input" value="SAVE">
+    <label for="password">Confirm Password:</label>
+    <input type="password" name="password" class="input" required>
+    <label for="token">Github PAC Token:</label>
+    <input type="text" name="token" class="input" pattern="^[a-zA-Z0-9]{40}$">
+    <input type="submit" class="input" value="Save Token">
 </form>
 {% endif %}
 
@@ -24,7 +29,7 @@
         <div class="box has-background-dark has-text-white has-text-centered">
             <h2 class="is-size-1-desktop">Confirm Delete</h2>
             <h2 class="is-size-5-desktop">
-                <span id="backlog_url"></span>
+                <span id="sprint_url"></span>
             </h2>
             <br>
             <a href="../delete_repo/" id="confirm" class="button modal-button">Confirm</a>
@@ -34,5 +39,5 @@
     <button class="modal-close is-large has-background-dark hide_modal_button" aria-label="close"></button>
 </div>
 
-<script src="{% static '/migrator_app/add_source.js' %}"></script>
-<script src="{% static '/migrator_app/delete_modal.js' %}"></script> {% endblock %}
+<script src="{% static '/migrator_app/js/validate_token.js' %}"></script>
+<script src="{% static '/migrator_app/js/delete_modal.js' %}"></script> {% endblock %}
