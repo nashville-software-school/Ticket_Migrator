@@ -4,7 +4,7 @@ from django.template import loader
 from migrator_app.models import *
 from django.contrib.auth.decorators import login_required
 import base64
-from pip._vendor import requests
+import requests
 # from ticket_migrator.migrator_app.models import source_repo_model
 
 
