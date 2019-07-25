@@ -73,7 +73,7 @@ class robot():
 
     def create_columns(self):
         url = f'https://api.github.com/projects/{self.target_project_id}/columns'
-        columns=('Backlog', 'To Do', 'Ready For Testing', 'Done')
+        columns=('Backlog', 'To Do', 'In Progress', 'Ready For Testing', 'Done')
         for column in columns:
             response = requests.post(url, json={'name': column}, headers=self.headers)
             if column=='Backlog':
