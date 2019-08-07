@@ -50,7 +50,7 @@ class robot():
         
 
     def run(self):
-        self.migrate_issues().create_project().create_columns().groom_sprint()
+        self.migrate_issues().create_project().create_columns().groom_sprint().create_retro_project()
 
     def migrate_issues(self):
         for source_issue in self.source_issues:
@@ -80,6 +80,20 @@ class robot():
                 self.target_sprint_id=response.json()['id']
             
         return self
+    
+    def create_retro_project(self):
+        body = {"name": "Retrospective",
+                "body": ""}
+        response = requests.post(f'https://api.github.com/repos/{self.target_repo}/projects', json=body, headers=self.headers).json()
+        print(response)
+        self.target_project_id = response['id']
+
+        url = f'https://api.github.com/projects/{self.target_project_id}/columns'
+        columns=('Stop Doing', 'Keep Doing', 'Start Doing', 'Kudos')
+        for column in columns:
+            response = requests.post(url, json={'name': column}, headers=self.headers)
+
+        return self
 
     def groom_sprint(self):
         url = f'https://api.github.com/projects/columns/{self.target_sprint_id}/cards'
@@ -88,3 +102,5 @@ class robot():
         for si in sorted_issues:
             body = {'content_id':si.target_id, "content_type":'Issue'}
             response = requests.post(url, json=body, headers=self.headers)
+
+        return self
