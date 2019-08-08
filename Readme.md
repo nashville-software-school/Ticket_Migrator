@@ -13,7 +13,7 @@ The application is hosted [here](migrator.bangazon.com). (:construction: current
 
 This application assumes Git has been installed previously. Follow [this link](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) for help with Git.
 
-In order to run the application, it is also assumed that you have a grasp of terminal and have a package manager. To get set up we need to install the following 4 dependencies. 
+In order to run the application, it is also assumed that you have a grasp of terminal and have a package manager. To get set up we need to install the following 4 dependencies.
 
 1. Node.js's package manager NPM [Download here](https://nodejs.org/en/).
 
@@ -26,17 +26,21 @@ In order to run the application, it is also assumed that you have a grasp of ter
     On MacOS: Enter `brew install pipenv` in the terminal.
 
     Otherwise: Enter `pip install pipenv`
- 
+
 
 ## Running the App
 
 1. Navigate to the directory where you wish to install the application and type:
 ```
-git clone origin git@github.com:PythonWizards/Ticket_Migrator.git
+git clone git@github.com:PythonWizards/Ticket_Migrator.git
 ```
-1. When download is complete, type `cd ./ticket_migrator/migrator_app/static/migrator_app`, then type  `npm i`. This will install any package dependencies. 
+1. When download is complete, type `cd ./ticket_migrator/migrator_app/static/migrator_app`, then type  `npm i`. This will install any package dependencies.
 
 1. Navigate back to the folder that contains the file `manage.py`.
+
+1. Enter virtual environment by typing `pipenv shell`.
+
+1. Install environment packages/dependencies by running the command `pipenv install`.
 
 1. Enter `python manage.py migrate`. Something similar to the following will appear indicating a successful migration:
 ```
@@ -45,10 +49,6 @@ Operations to perform:
 Running migrations:
   Applying migrator_app.0007_auto_20180501_1502... OK
 ```
-
-1. Next, enter virtual environment by typing `pipenv shell`.
-
-1. Install environment packages/dependencies by running the command `pipenv install`.
 
 1. Finally we run the application using `python manage.py runserver` and navigate in `127.0.0.1.8000` in a web browser.
 
