@@ -85,7 +85,6 @@ class robot():
         body = {"name": "Retrospective",
                 "body": ""}
         response = requests.post(f'https://api.github.com/repos/{self.target_repo}/projects', json=body, headers=self.headers).json()
-        print(response)
         self.target_project_id = response['id']
 
         url = f'https://api.github.com/projects/{self.target_project_id}/columns'
