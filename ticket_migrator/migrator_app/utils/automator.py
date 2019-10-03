@@ -21,8 +21,9 @@ class automator():
 
     def get_issues(self):
 
-        url = f'https://api.github.com/repos/{self.source_repo}/issues'
+        url = f'https://api.github.com/repos/{self.source_repo}/issues?per_page=70'
         response = requests.get(url, headers=self.headers).json()
+        print(response)
 
         self.source_issues = [issue(next(x for x in response if x['id'] == item['issue_id']), item['priority']) for item in self.issue_array]
 
@@ -47,7 +48,7 @@ class robot():
         self.sprint_name = sprint_name
         self.target_project_id = None
         self.target_sprint_id = None
-        
+
 
     def run(self):
         self.migrate_issues().create_project().create_columns().groom_sprint()
@@ -78,7 +79,7 @@ class robot():
             response = requests.post(url, json={'name': column}, headers=self.headers)
             if column=='Backlog':
                 self.target_sprint_id=response.json()['id']
-            
+
         return self
 
     def groom_sprint(self):

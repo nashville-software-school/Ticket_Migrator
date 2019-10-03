@@ -22,7 +22,7 @@ def drag_view(request, source_repo_id):
     github_location = selected_source_repo.url.split("https://github.com/")[1]
 
     headers = {'Accept': 'application/vnd.github.inertia-preview+json'}
-    url = f'https://spyproxy.bangazon.com/student/commit/https://api.github.com/repos/{github_location}/issues'
+    url = f'https://spyproxy.bangazon.com/student/commit/https://api.github.com/repos/{github_location}/issues?per_page=70'
 
     response = requests.get(url, headers=headers).json()
 

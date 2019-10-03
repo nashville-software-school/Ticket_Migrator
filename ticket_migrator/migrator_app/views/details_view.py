@@ -12,12 +12,12 @@ import json
 
 @login_required
 def details(request, sprint_id):
-    
+
     selected_sprint = get_object_or_404(sprint_model.Sprint, pk=sprint_id)
     github = selected_sprint.source_repo.url.split('https://github.com/')[1]
 
     headers = {'Accept': 'application/vnd.github.inertia-preview+json'}
-    url = f'https://spyproxy.bangazon.com/student/commit/https://api.github.com/repos/{github}/issues'
+    url = f'https://spyproxy.bangazon.com/student/commit/https://api.github.com/repos/{github}/issues?per_page=70'
 
     response = requests.get(url, headers=headers).json()
 
@@ -27,6 +27,6 @@ def details(request, sprint_id):
 
     context = {"sprint": selected_sprint,
                "issues": issues}
-        
+
     return render(request, 'migrator_app/details.html', context)
 
